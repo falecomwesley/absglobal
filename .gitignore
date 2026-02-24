@@ -1,0 +1,49 @@
+# WordPress - Arquivo de Configuração
+wp-config.php
+
+# Arquivos de backup do wp-config
+wp-config-*.php
+
+# Uploads e cache
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup*/
+wp-content/backups/
+wp-content/upgrade/
+
+# Plugins e temas atualizados automaticamente (opcional - descomente se quiser versionar)
+# wp-content/plugins/
+# wp-content/themes/
+
+# Logs
+*.log
+error_log
+debug.log
+
+# Arquivos do sistema operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Arquivos do editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Node modules (se usar npm/yarn)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Composer
+/vendor/
+
+# Arquivos temporários
+*.tmp
+*.temp
