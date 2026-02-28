@@ -1,0 +1,9 @@
+# This directory will contain plugin modules
+# - class-auth-manager.php
+# - class-order-sync.php
+# - class-customer-sync.php
+# - class-catalog-sync.php
+# - class-webhook-handler.php
+# - class-logger.php
+# - class-retry-manager.php
+# - class-mapping-engine.php

@@ -1,0 +1,71 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Composer
+composer.lock
+composer.phar
+
+# PHPUnit
+.phpunit.result.cache
+/coverage/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build files
+/dist/
+/build/
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Package managers
+package-lock.json
+yarn.lock
+
+# Test files (optional - uncomment if you don't want to commit test files)
+# /tests/
+
+# Documentation build
+/docs/_build/
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Generated files
+generate-pot.php
+generate-mo.php

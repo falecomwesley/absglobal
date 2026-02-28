@@ -1,0 +1,4 @@
+# This directory will contain admin interface classes
+# - class-admin.php
+# - class-settings.php
+# - class-log-viewer.php

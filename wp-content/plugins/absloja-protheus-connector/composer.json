@@ -1,0 +1,36 @@
+{
+    "name": "absloja/protheus-connector",
+    "description": "WordPress plugin to integrate WooCommerce with TOTVS Protheus ERP",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "ABS Loja",
+            "email": "dev@absloja.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "brain/monkey": "^2.6",
+        "mockery/mockery": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ABSLoja\\ProtheusConnector\\": "includes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ABSLoja\\ProtheusConnector\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-unit": "phpunit --testsuite unit",
+        "test-property": "phpunit --testsuite property",
+        "test-integration": "phpunit --testsuite integration"
+    }
+}

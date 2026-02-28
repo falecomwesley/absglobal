@@ -1,0 +1,779 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Hello Elementor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-27 18:20+0000\n"
+"PO-Revision-Date: 2026-02-27 18:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: Português do Brasil\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.1; wp-6.9.1; php-8.2.0\n"
+"X-Domain: hello-elementor"
+
+#: functions.php:42 includes/settings/settings-header.php:47
+#: modules/admin-home/rest/admin-config.php:196
+msgid "Header"
+msgstr ""
+
+#: functions.php:43 includes/settings/settings-footer.php:46
+#: modules/admin-home/rest/admin-config.php:203
+msgid "Footer"
+msgstr ""
+
+#: comments.php:32
+msgctxt "comments title"
+msgid "One Response"
+msgstr ""
+
+#. %s: Number of comments.
+#: comments.php:37
+#, php-format
+msgctxt "comments title"
+msgid "%s Response"
+msgid_plural "%s Responses"
+msgstr[0] ""
+msgstr[1] ""
+
+#: header.php:30
+msgid "Skip to content"
+msgstr ""
+
+#: includes/customizer-functions.php:17 includes/elementor-functions.php:216
+msgid "Header & Footer"
+msgstr ""
+
+#: includes/customizer-functions.php:60
+msgid "Customize your entire website with Elementor Pro"
+msgstr ""
+
+#: includes/customizer-functions.php:61
+msgid ""
+"Build and customize every part of your website, including Theme Parts with "
+"Elementor Pro."
+msgstr ""
+
+#: includes/customizer-functions.php:62
+#: includes/settings/settings-header.php:775
+#: includes/settings/settings-footer.php:742
+#: modules/admin-home/rest/promotions.php:27
+msgid "Upgrade Now"
+msgstr ""
+
+#: includes/module-base.php:259 includes/module-base.php:270
+msgid "Something went wrong."
+msgstr ""
+
+#: includes/elementor-functions.php:217
+msgid "Hello Theme"
+msgstr ""
+
+#: includes/elementor-functions.php:220
+msgid ""
+"Customize and style the builtin Hello Theme’s cross-site header & footer "
+"from the Elementor \"Site Settings\" panel."
+msgstr ""
+
+#: includes/elementor-functions.php:222
+msgid "Learn More"
+msgstr ""
+
+#: template-parts/404.php:16
+msgid "The page can&rsquo;t be found."
+msgstr ""
+
+#: template-parts/404.php:21
+msgid "It looks like nothing was found at this location."
+msgstr ""
+
+#. %s: HTML entity for arrow character.
+#: template-parts/archive.php:50 template-parts/search.php:56
+#, php-format
+msgid "%s Previous"
+msgstr ""
+
+#. %s: HTML entity for arrow character.
+#: template-parts/archive.php:54 template-parts/search.php:60
+#, php-format
+msgid "Next %s"
+msgstr ""
+
+#: template-parts/search.php:17
+msgid "Search results for: "
+msgstr ""
+
+#: template-parts/search.php:43
+msgid "It seems we can't find what you're looking for."
+msgstr ""
+
+#: template-parts/header.php:30 template-parts/dynamic-footer.php:33
+#: template-parts/dynamic-header.php:39
+#: modules/admin-home/components/admin-menu-controller.php:32
+#: modules/admin-home/components/admin-menu-controller.php:33
+msgid "Home"
+msgstr ""
+
+#: template-parts/header.php:43 template-parts/dynamic-header.php:53
+msgid "Main menu"
+msgstr ""
+
+#: template-parts/footer.php:20 template-parts/dynamic-footer.php:47
+msgid "Footer menu"
+msgstr ""
+
+#: template-parts/single.php:30
+msgid "Tagged "
+msgstr ""
+
+#: template-parts/dynamic-header.php:66
+msgid "Mobile menu"
+msgstr ""
+
+#: includes/settings/settings-header.php:24
+msgid "Hello Theme Header"
+msgstr ""
+
+#: includes/settings/settings-header.php:55
+#: includes/settings/settings-header.php:286
+#: includes/settings/settings-footer.php:54
+#: includes/settings/settings-footer.php:291
+#: modules/admin-home/rest/admin-config.php:292
+msgid "Site Logo"
+msgstr ""
+
+#: includes/settings/settings-header.php:57
+#: includes/settings/settings-header.php:68
+#: includes/settings/settings-header.php:79
+#: includes/settings/settings-footer.php:56
+#: includes/settings/settings-footer.php:68
+#: includes/settings/settings-footer.php:80
+#: includes/settings/settings-footer.php:92
+msgid "Show"
+msgstr ""
+
+#: includes/settings/settings-header.php:58
+#: includes/settings/settings-header.php:69
+#: includes/settings/settings-header.php:80
+#: includes/settings/settings-footer.php:57
+#: includes/settings/settings-footer.php:69
+#: includes/settings/settings-footer.php:81
+#: includes/settings/settings-footer.php:93
+msgid "Hide"
+msgstr ""
+
+#: includes/settings/settings-header.php:66
+#: includes/settings/settings-header.php:497
+#: includes/settings/settings-footer.php:66
+#: includes/settings/settings-footer.php:495
+msgid "Tagline"
+msgstr ""
+
+#: includes/settings/settings-header.php:77
+#: includes/settings/settings-header.php:572
+#: includes/settings/settings-header.php:624
+#: includes/settings/settings-footer.php:78
+#: includes/settings/settings-footer.php:563
+#: includes/settings/settings-footer.php:608
+msgid "Menu"
+msgstr ""
+
+#. %s: Link that opens the theme settings page.
+#: includes/settings/settings-header.php:91
+#: includes/settings/settings-footer.php:105
+#, php-format
+msgid ""
+"Note: Hiding all the elements, only hides them visually. To disable them "
+"completely go to <a href=\"%s\">Theme Settings</a> ."
+msgstr ""
+
+#: includes/settings/settings-header.php:107
+#: includes/settings/settings-footer.php:122
+msgid "Layout"
+msgstr ""
+
+#: includes/settings/settings-header.php:110
+#: includes/settings/settings-footer.php:125
+msgid "Inverted"
+msgstr ""
+
+#: includes/settings/settings-header.php:114
+#: includes/settings/settings-footer.php:129
+msgid "Centered"
+msgstr ""
+
+#: includes/settings/settings-header.php:118
+#: includes/settings/settings-footer.php:133
+msgid "Default"
+msgstr ""
+
+#: includes/settings/settings-header.php:133
+#: includes/settings/settings-footer.php:148
+msgid "Tagline Position"
+msgstr ""
+
+#: includes/settings/settings-header.php:136
+#: includes/settings/settings-footer.php:151
+msgid "Before"
+msgstr ""
+
+#: includes/settings/settings-header.php:140
+#: includes/settings/settings-footer.php:155
+msgid "Below"
+msgstr ""
+
+#: includes/settings/settings-header.php:144
+#: includes/settings/settings-footer.php:159
+msgid "After"
+msgstr ""
+
+#: includes/settings/settings-header.php:169
+#: includes/settings/settings-footer.php:184
+msgid "Tagline Gap"
+msgstr ""
+
+#: includes/settings/settings-header.php:196
+#: includes/settings/settings-footer.php:211
+msgid "Width"
+msgstr ""
+
+#: includes/settings/settings-header.php:198
+#: includes/settings/settings-footer.php:213
+msgid "Boxed"
+msgstr ""
+
+#: includes/settings/settings-header.php:199
+#: includes/settings/settings-footer.php:214
+msgid "Full Width"
+msgstr ""
+
+#: includes/settings/settings-header.php:211
+#: includes/settings/settings-footer.php:226
+msgid "Content Width"
+msgstr ""
+
+#: includes/settings/settings-header.php:237
+#: includes/settings/settings-footer.php:252
+msgid "Side Margins"
+msgstr ""
+
+#: includes/settings/settings-header.php:273
+#: includes/settings/settings-footer.php:278
+msgid "Background"
+msgstr ""
+
+#. %s: Link that opens Elementor's "Site Identity" panel.
+#: includes/settings/settings-header.php:307
+#: includes/settings/settings-footer.php:305
+#, php-format
+msgid "Go to <a href=\"%s\">Site Identity</a> to manage your site's logo"
+msgstr ""
+
+#. %s: Link that opens Elementor's "Site Identity" panel.
+#: includes/settings/settings-header.php:325
+#: includes/settings/settings-footer.php:323
+#, php-format
+msgid "Go to <a href=\"%s\">Site Identity</a> to manage your site's title"
+msgstr ""
+
+#: includes/settings/settings-header.php:339
+#: includes/settings/settings-footer.php:337
+msgid "Type"
+msgstr ""
+
+#: includes/settings/settings-header.php:343
+#: includes/settings/settings-footer.php:341
+msgid "Logo"
+msgstr ""
+
+#: includes/settings/settings-header.php:344
+#: includes/settings/settings-footer.php:342
+msgid "Title"
+msgstr ""
+
+#: includes/settings/settings-header.php:354
+#: includes/settings/settings-footer.php:352
+msgid "Logo Width"
+msgstr ""
+
+#: includes/settings/settings-header.php:381
+#: includes/settings/settings-header.php:546
+#: includes/settings/settings-header.php:724
+#: includes/settings/settings-footer.php:379
+#: includes/settings/settings-footer.php:537
+#: includes/settings/settings-footer.php:630
+#: includes/settings/settings-footer.php:692
+msgid "Typography"
+msgstr ""
+
+#: includes/settings/settings-header.php:394
+#: includes/settings/settings-header.php:558
+#: includes/settings/settings-header.php:736
+#: includes/settings/settings-footer.php:392
+#: includes/settings/settings-footer.php:549
+#: includes/settings/settings-footer.php:639
+#: includes/settings/settings-footer.php:704
+msgid "Text Shadow"
+msgstr ""
+
+#: includes/settings/settings-header.php:407
+#: includes/settings/settings-footer.php:405
+msgid "Text Stroke"
+msgstr ""
+
+#: includes/settings/settings-header.php:421
+#: includes/settings/settings-footer.php:419
+msgid "Normal"
+msgstr ""
+
+#: includes/settings/settings-header.php:432
+#: includes/settings/settings-header.php:460
+#: includes/settings/settings-header.php:531
+#: includes/settings/settings-footer.php:430
+#: includes/settings/settings-footer.php:458
+#: includes/settings/settings-footer.php:522
+#: includes/settings/settings-footer.php:677
+msgid "Text Color"
+msgstr ""
+
+#: includes/settings/settings-header.php:449
+#: includes/settings/settings-footer.php:447
+msgid "Hover"
+msgstr ""
+
+#: includes/settings/settings-header.php:475
+#: includes/settings/settings-footer.php:473
+msgid "Transition Duration"
+msgstr ""
+
+#. %s: Link that opens Elementor's "Site Identity" panel.
+#: includes/settings/settings-header.php:518
+#: includes/settings/settings-footer.php:509
+#, php-format
+msgid "Go to <a href=\"%s\">Site Identity</a> to manage your site's tagline"
+msgstr ""
+
+#: includes/settings/settings-header.php:588
+#: includes/settings/settings-footer.php:572
+msgid "— Select a Menu —"
+msgstr ""
+
+#: includes/settings/settings-header.php:599
+#: includes/settings/settings-footer.php:583
+msgid "There are no menus in your site."
+msgstr ""
+
+#: includes/settings/settings-header.php:601
+#: includes/settings/settings-footer.php:585
+#, php-format
+msgid "Go to <a href=\"%s\" target=\"_blank\">Menus screen</a> to create one."
+msgstr ""
+
+#: includes/settings/settings-header.php:614
+#: includes/settings/settings-footer.php:598
+#, php-format
+msgid ""
+"Go to the <a href=\"%s\" target=\"_blank\">Menus screen</a> to manage your "
+"menus. Changes will be reflected in the preview only after the page reloads."
+msgstr ""
+
+#: includes/settings/settings-header.php:634
+msgid "Menu Layout"
+msgstr ""
+
+#: includes/settings/settings-header.php:638
+msgid "Horizontal"
+msgstr ""
+
+#: includes/settings/settings-header.php:639
+msgid "Dropdown"
+msgstr ""
+
+#. 1: Breakpoint label, 2: Breakpoint value.
+#: includes/settings/settings-header.php:656
+#, php-format
+msgid "%1$s (> %2$dpx)"
+msgstr ""
+
+#: includes/settings/settings-header.php:662
+msgid "None"
+msgstr ""
+
+#: includes/settings/settings-header.php:667
+msgid "Breakpoint"
+msgstr ""
+
+#: includes/settings/settings-header.php:681
+#: includes/settings/settings-footer.php:618
+msgid "Color"
+msgstr ""
+
+#: includes/settings/settings-header.php:695
+msgid "Toggle Color"
+msgstr ""
+
+#: includes/settings/settings-header.php:709
+msgid "Toggle Background Color"
+msgstr ""
+
+#: includes/settings/settings-header.php:771
+#: includes/settings/settings-footer.php:738
+msgid "Get Elementor Pro"
+msgstr ""
+
+#: includes/settings/settings-header.php:772
+msgid "Create custom headers"
+msgstr ""
+
+#: includes/settings/settings-header.php:773
+msgid "Add mega menus, search bars, login buttons and more with Elementor Pro."
+msgstr ""
+
+#: includes/settings/settings-header.php:781
+#: includes/settings/settings-footer.php:748
+#: modules/admin-home/rest/promotions.php:22
+msgid "Elementor Pro"
+msgstr ""
+
+#: includes/settings/settings-header.php:782
+msgid "Create a custom header with the Theme Builder"
+msgstr ""
+
+#: includes/settings/settings-header.php:783
+#: includes/settings/settings-footer.php:750
+msgid ""
+"With the Theme Builder you can jump directly into each part of your site"
+msgstr ""
+
+#: includes/settings/settings-header.php:785
+msgid "Create Header"
+msgstr ""
+
+#: includes/settings/settings-footer.php:23
+msgid "Hello Theme Footer"
+msgstr ""
+
+#: includes/settings/settings-footer.php:90
+#: includes/settings/settings-footer.php:651
+msgid "Copyright"
+msgstr ""
+
+#: includes/settings/settings-footer.php:669
+msgid "Text"
+msgstr ""
+
+#: includes/settings/settings-footer.php:670
+msgid "All rights reserved"
+msgstr ""
+
+#: includes/settings/settings-footer.php:739
+msgid "Create custom footers"
+msgstr ""
+
+#: includes/settings/settings-footer.php:740
+msgid ""
+"Adjust your footer to include contact forms, sitemaps and more with "
+"Elementor Pro."
+msgstr ""
+
+#: includes/settings/settings-footer.php:749
+msgid "Create a custom footer with the Theme Builder"
+msgstr ""
+
+#: includes/settings/settings-footer.php:752
+msgid "Create Footer"
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:47
+#: includes/customizer/customizer-action-links.php:66
+#: includes/customizer/customizer-action-links.php:76
+#: includes/customizer/customizer-action-links.php:86
+msgid "Elementor"
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:48
+#: includes/customizer/customizer-action-links.php:50
+#: modules/admin-home/rest/admin-config.php:333
+msgid "Install Elementor"
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:49
+#: includes/customizer/customizer-action-links.php:68
+msgid "Create cross-site header & footer using Elementor."
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:67
+#: includes/customizer/customizer-action-links.php:69
+#: modules/admin-home/rest/admin-config.php:331
+msgid "Activate Elementor"
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:77
+msgid "Style using Elementor"
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:78
+msgid ""
+"Design your cross-site header & footer from Elementor’s \"Site Settings\" "
+"panel."
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:79
+msgid "Activate header & footer experiment"
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:87
+msgid "Style cross-site header & footer"
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:88
+msgid ""
+"Customize your cross-site header & footer from Elementor’s \"Site Settings\" "
+"panel."
+msgstr ""
+
+#: includes/customizer/customizer-action-links.php:89
+msgid "Start Designing"
+msgstr ""
+
+#: modules/admin-home/components/finder.php:14
+msgid "Hello Theme Home"
+msgstr ""
+
+#: modules/admin-home/components/conversion-banner.php:189
+msgid "Notice dismissed."
+msgstr ""
+
+#: modules/admin-home/components/admin-menu-controller.php:21
+#: modules/admin-home/components/admin-menu-controller.php:22
+msgid "Hello"
+msgstr ""
+
+#: modules/admin-home/components/admin-menu-controller.php:44
+#: modules/admin-home/components/admin-menu-controller.php:45
+#: modules/admin-home/rest/admin-config.php:212
+msgid "Theme Builder"
+msgstr ""
+
+#: modules/admin-home/components/admin-menu-controller.php:53
+#: modules/admin-home/components/admin-menu-controller.php:54
+msgid "AI Site Planner"
+msgstr ""
+
+#: modules/admin-home/components/settings-controller.php:140
+#: modules/admin-home/components/settings-controller.php:141
+#: modules/admin-home/rest/admin-config.php:185
+msgid "Settings"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:23
+msgid "Bring your vision to life"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:25
+msgid ""
+"Get complete design flexibility for your website with Elementor Pro’s "
+"advanced tools and premium features."
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:30
+msgid "Popup Builder"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:31
+msgid "Custom Code & CSS"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:32
+msgid "E-commerce Features"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:33
+msgid "Collaborative Notes"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:34
+msgid "Form Submission"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:35
+msgid "Form Integrations"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:36
+msgid "Customs Attribute"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:37
+msgid "Role Manager"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:50
+msgid "Elementor Image Optimizer"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:53
+msgid "Optimize Images."
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:54
+msgid "Reduce Size."
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:55
+msgid "Improve Speed."
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:56
+msgid "Try Image Optimizer for free"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:58
+#: modules/admin-home/rest/promotions.php:78
+msgid "Install"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:72
+msgid "Send"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:76
+msgid ""
+"Connect any website to automated Email & SMS workflows in a click with Send."
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:91
+#: modules/admin-home/rest/promotions.php:92
+msgid "Elementor AI"
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:94
+msgid ""
+"Boost creativity with Elementor AI. Craft & enhance copy, create custom CSS "
+"& Code, and generate images to elevate your website."
+msgstr ""
+
+#: modules/admin-home/rest/promotions.php:96
+msgid "Let's Go"
+msgstr ""
+
+#: modules/admin-home/rest/theme-settings.php:50
+msgid "Settings must be an array"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:100
+msgid "Facebook"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:106
+msgid "YouTube"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:112
+msgid "Discord"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:117
+msgid "Rate Us"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:125
+msgid "Help Center"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:131
+msgid "Blog"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:137
+msgid "Platinum Support"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:180
+msgid "Add New Page"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:257
+msgid "Edit"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:261
+msgid "Add New"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:286
+msgid "Site Name"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:297
+msgid "Site Favicon"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:305
+msgid "Site Colors"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:311
+msgid "Site Fonts"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:337
+msgid "Thanks for installing the Hello Theme!"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:338
+msgid ""
+"Welcome to Hello Theme—a lightweight, blank canvas designed to integrate "
+"seamlessly with Elementor, the most popular, no-code visual website builder. "
+"By installing and activating Elementor, you'll unlock the power to craft a "
+"professional website with advanced features and functionalities."
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:358
+msgid "Go Pro, Go Limitless"
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:359
+msgid ""
+"Unlock the theme builder, popup builder, 100+ widgets and more advanced "
+"tools to take your website to the next level."
+msgstr ""
+
+#: modules/admin-home/rest/admin-config.php:362
+msgid "Upgrade now"
+msgstr ""
+
+#. Name of the theme
+msgid "Hello Elementor"
+msgstr ""
+
+#. Description of the theme
+msgid ""
+"Hello Elementor is a lightweight and minimalist WordPress theme that was "
+"built specifically to work seamlessly with the Elementor site builder plugin."
+" The theme is free, open-source, and designed for users who want a flexible, "
+"easy-to-use, and customizable website. The theme, which is optimized for "
+"performance, provides a solid foundation for users to build their own unique "
+"designs using the Elementor drag-and-drop site builder. Its simplicity and "
+"flexibility make it a great choice for both beginners and experienced Web "
+"Creators."
+msgstr ""
+
+#. URI of the theme
+msgid ""
+"https://elementor.com/hello-theme/?utm_source=wp-themes&utm_campaign=theme-"
+"uri&utm_medium=wp-dash"
+msgstr ""
+
+#. Author of the theme
+msgid "Elementor Team"
+msgstr ""
+
+#. Author URI of the theme
+msgid ""
+"https://elementor.com/?utm_source=wp-themes&utm_campaign=author-"
+"uri&utm_medium=wp-dash"
+msgstr ""

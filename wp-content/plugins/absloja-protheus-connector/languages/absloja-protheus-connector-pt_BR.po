@@ -1,0 +1,422 @@
+# Copyright (C) 2024 ABS Loja Protheus Connector
+# This file is distributed under the same license as the ABS Loja Protheus Connector package.
+msgid ""
+msgstr ""
+"Project-Id-Version: ABS Loja Protheus Connector 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/absloja-protheus-"
+"connector\n"
+"POT-Creation-Date: 2024-01-01 00:00:00+00:00\n"
+"PO-Revision-Date: 2026-02-27 18:57+0000\n"
+"Last-Translator: ABS Global\n"
+"Language-Team: Português do Brasil\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: includes/admin/views/tab-schedule.php
+msgid "1 hour"
+msgstr "1 hora"
+
+#: includes/admin/views/tab-schedule.php
+msgid "12 hours"
+msgstr "12 horas"
+
+#: includes/admin/views/tab-schedule.php
+#, fuzzy
+#| msgid "minutes"
+msgid "15 minutes"
+msgstr "minutos"
+
+#: includes/admin/views/tab-schedule.php
+msgid "24 hours"
+msgstr "24 horas"
+
+#: includes/admin/views/tab-schedule.php
+msgid "30 minutes"
+msgstr "30 minutos"
+
+#: includes/admin/views/tab-schedule.php
+#| msgid "hours"
+msgid "6 hours"
+msgstr "6 horas"
+
+#: includes/admin/class-settings.php:241
+msgid "Advanced"
+msgstr "Avançado"
+
+#: includes/modules/class-error-handler.php
+msgid "API authentication failed"
+msgstr "A autenticação da API falhou."
+
+#: includes/modules/class-error-handler.php
+msgid "API connection timeout"
+msgstr "tempo limite de conexão da API"
+
+# ============================================
+# CONNECTION TAB
+# ============================================
+#: includes/admin/views/tab-connection.php
+msgid "API URL"
+msgstr "URL da API"
+
+#: includes/admin/views/tab-logs.php
+msgid "Apply Filters"
+msgstr "Aplicar filtros"
+
+#: includes/admin/class-admin.php:135
+msgid "Are you sure you want to retry this operation?"
+msgstr "Tem certeza que deseja tentar novamente esta operação?"
+
+#: includes/admin/views/tab-connection.php
+msgid "Authentication Type"
+msgstr "Tipo de Autenticação"
+
+#: includes/admin/views/tab-connection.php
+msgid "Basic Authentication"
+msgstr "Autenticação Básica"
+
+#: includes/admin/views/tab-advanced.php
+msgid "Batch Size"
+msgstr "Tamanho do Lote"
+
+#: includes/admin/class-admin.php:274
+msgid "Catalog sync completed! %d products synced."
+msgstr "Sincronização de catálogo concluída! %d produtos sincronizados."
+
+#: includes/admin/class-admin.php:285
+msgid "Catalog sync failed: %s"
+msgstr "Falha na sincronização de catálogo: %s"
+
+#: includes/admin/views/tab-schedule.php
+msgid "Catalog Sync Frequency"
+msgstr "Frequência de Sincronização do Catálogo"
+
+#: includes/admin/views/tab-mappings.php
+#, fuzzy
+#| msgid "Category Mapping"
+msgid "Category Mappings"
+msgstr "Mapeamento de Categorias"
+
+#: includes/admin/views/tab-connection.php
+msgid "Client ID"
+msgstr "ID do Cliente"
+
+#: includes/admin/views/tab-connection.php
+msgid "Client Secret"
+msgstr "Segredo do Cliente"
+
+#: includes/admin/views/tab-connection.php
+msgid "Connected"
+msgstr "Conectado"
+
+# ============================================
+# TAB NAMES
+# ============================================
+#: includes/admin/class-settings.php:237
+msgid "Connection"
+msgstr "Conexão"
+
+#: includes/admin/class-admin.php:248
+msgid "Connection failed. Please check your credentials."
+msgstr "Falha na conexão. Por favor, verifique suas credenciais."
+
+#: includes/admin/views/tab-connection.php
+msgid "Connection Status"
+msgstr "Status da Conexão"
+
+#: includes/admin/class-admin.php:242
+msgid "Connection successful!"
+msgstr "Conexão bem-sucedida!"
+
+#: includes/admin/views/tab-logs.php
+msgid "Date From"
+msgstr "Data de início"
+
+#: includes/admin/views/tab-logs.php
+msgid "Date To"
+msgstr "Data até"
+
+#: includes/admin/class-admin.php:134
+msgid "Error:"
+msgstr "Erro:"
+
+#: includes/admin/class-admin.php:407
+msgid "Export failed: %s"
+msgstr "Falha na exportação: %s"
+
+#: includes/admin/class-admin.php:136
+msgid "Export logs to CSV?"
+msgstr "Exportar logs para CSV?"
+
+#: includes/admin/views/tab-logs.php
+msgid "Export to CSV"
+msgstr "Exportar para CSV"
+
+#: includes/admin/views/tab-logs.php
+msgid "Filter Logs"
+msgstr "Filtrar registros"
+
+#: includes/admin/views/tab-advanced.php
+msgid "Image URL Pattern"
+msgstr "Padrão de URL de Imagem"
+
+#: includes/modules/class-error-handler.php
+msgid "Insufficient stock for product: %s"
+msgstr "Estoque insuficiente para o produto: %s"
+
+#: includes/modules/class-error-handler.php
+msgid "Invalid CPF/CNPJ: %s"
+msgstr "CPF/CNPJ inválido: %s"
+
+#: includes/admin/class-admin.php:344
+msgid "Invalid retry ID"
+msgstr "ID de retry inválido"
+
+#: includes/admin/views/dashboard-widget.php
+#, fuzzy
+#| msgid "Last Catalog Sync:"
+msgid "Last Catalog Sync"
+msgstr "Última Sincronização de Catálogo:"
+
+#: includes/admin/views/dashboard-widget.php
+#, fuzzy
+#| msgid "Last Stock Sync:"
+msgid "Last Stock Sync"
+msgstr "Última Sincronização de Estoque:"
+
+#: includes/admin/views/tab-schedule.php
+msgid "Last Sync"
+msgstr "Última sincronização"
+
+#: includes/admin/views/tab-advanced.php
+msgid "Log Retention (days)"
+msgstr "Tempo de retenção de logs (dias)"
+
+#: includes/admin/class-settings.php:240
+msgid "Logs"
+msgstr "Logs"
+
+#: includes/admin/class-settings.php:238
+msgid "Mappings"
+msgstr "Mapeamentos"
+
+#: includes/admin/views/tab-advanced.php
+msgid "Mark as Failed"
+msgstr "Marcar como reprovado"
+
+#: includes/admin/views/tab-advanced.php
+msgid "Maximum Retries"
+msgstr "Número máximo de tentativas"
+
+#: includes/admin/views/tab-logs.php
+msgid "Message"
+msgstr "Mensagem"
+
+#: includes/admin/class-admin.php:190
+msgid "Never"
+msgstr "Nunca"
+
+#: includes/admin/views/tab-logs.php
+#, fuzzy
+#| msgid "No logs found"
+msgid "No logs found."
+msgstr "Nenhum log encontrado"
+
+#: includes/admin/views/tab-connection.php
+msgid "Not Connected"
+msgstr "Não conectado"
+
+#: includes/admin/views/tab-connection.php
+msgid "OAuth2"
+msgstr "OAuth2"
+
+#: includes/admin/views/tab-logs.php
+msgid "Operation"
+msgstr "Operação"
+
+#: includes/modules/class-retry-manager.php
+msgid "Operation failed permanently after %d attempts"
+msgstr "A operação falhou permanentemente após %d tentativas."
+
+#: includes/admin/views/dashboard-widget.php
+msgid "Orders Pending Review"
+msgstr "Pedidos pendentes de revisão."
+
+#: includes/admin/views/dashboard-widget.php
+#, fuzzy
+#| msgid "Orders Synced:"
+msgid "Orders Synced"
+msgstr "Pedidos Sincronizados:"
+
+#: includes/admin/views/tab-connection.php
+msgid "Password"
+msgstr "Senha"
+
+# ============================================
+# MAPPINGS TAB
+# ============================================
+#: includes/admin/views/tab-mappings.php
+#, fuzzy
+#| msgid "Payment Method Mapping"
+msgid "Payment Method Mappings"
+msgstr "Mapeamento de Formas de Pagamento"
+
+#: includes/admin/views/dashboard-widget.php
+msgid "Pending Retries"
+msgstr "Retries Pendentes"
+
+#: includes/admin/class-admin.php:234
+msgid "Permission denied"
+msgstr "Permissão negada"
+
+#: includes/admin/class-settings.php:107
+msgid "Please enter a valid API URL."
+msgstr "Por favor, insira uma URL de API válida."
+
+#: includes/admin/views/dashboard-widget.php
+#, fuzzy
+#| msgid "Products Synced:"
+msgid "Products Synced"
+msgstr "Produtos Sincronizados:"
+
+#: includes/modules/class-error-handler.php
+msgid "Protheus API error: %s"
+msgstr "Erro na API do Protheus: %s"
+
+# ============================================
+# MENU AND PAGE TITLES
+# ============================================
+#: includes/admin/class-admin.php:90
+msgid "Protheus Connector"
+msgstr "Conector Protheus"
+
+#: includes/admin/class-admin.php:152
+msgid "Protheus Connector Status"
+msgstr "Status do Conector Protheus"
+
+#: includes/admin/views/dashboard-widget.php
+#, fuzzy
+#| msgid "Recent Errors (24h):"
+msgid "Recent Errors (24h)"
+msgstr "Erros Recentes (24h):"
+
+#: includes/admin/views/tab-mappings.php
+msgid "Reset to Defaults"
+msgstr "Restaurar padrões de fábrica"
+
+#: includes/admin/class-admin.php:352
+msgid "Retry completed successfully!"
+msgstr "Retry concluído com sucesso!"
+
+#: includes/admin/class-admin.php:358
+msgid "Retry failed. Check logs for details."
+msgstr "Falha no retry. Verifique os logs para detalhes."
+
+#: includes/admin/views/tab-advanced.php
+msgid "Retry Interval (seconds)"
+msgstr "Intervalo de tentativas (segundos)"
+
+#: includes/modules/class-retry-manager.php
+msgid "Retry limit exceeded for operation: %s"
+msgstr "Limite de tentativas excedido para a operação: %s"
+
+#: includes/admin/views/tab-advanced.php
+msgid "Retry Now"
+msgstr "Tentar Agora"
+
+#: includes/admin/views/tab-logs.php
+#, fuzzy
+#| msgid "Status:"
+msgid "Status"
+msgstr "Status:"
+
+#: includes/admin/views/tab-mappings.php
+#, fuzzy
+#| msgid "Status Mapping"
+msgid "Status Mappings"
+msgstr "Mapeamento de Status"
+
+#: includes/admin/class-admin.php:312
+msgid "Stock sync completed! %d products updated."
+msgstr "Sincronização de estoque concluída! %d produtos atualizados."
+
+#: includes/admin/class-admin.php:323
+msgid "Stock sync failed: %s"
+msgstr "Falha na sincronização de estoque: %s"
+
+#: includes/admin/views/tab-schedule.php
+msgid "Stock Sync Frequency"
+msgstr "Frequência de Sincronização de Estoque"
+
+#: includes/admin/class-admin.php:133
+msgid "Success!"
+msgstr "Sucesso!"
+
+#: includes/admin/views/tab-schedule.php
+msgid "Sync Catalog Now"
+msgstr "Sincronizar Catálogo Agora"
+
+#: includes/admin/class-settings.php:239
+msgid "Sync Schedule"
+msgstr "Agendamento"
+
+#: includes/admin/views/tab-schedule.php
+msgid "Sync Stock Now"
+msgstr "Sincronizar Estoque Agora"
+
+#: includes/admin/class-admin.php:132
+msgid "Syncing..."
+msgstr "Sincronizando..."
+
+#: includes/modules/class-error-handler.php
+msgid "TES not found for state: %s"
+msgstr "TES não encontrado para o estado: %s"
+
+#: includes/admin/views/tab-mappings.php
+msgid "TES Rules by State"
+msgstr "Regras de TES por Estado"
+
+#: includes/admin/views/tab-connection.php
+msgid "Test Connection"
+msgstr "Testar Conexão"
+
+#: includes/admin/class-admin.php:131
+msgid "Testing connection..."
+msgstr "Testando conexão..."
+
+#: includes/admin/views/tab-logs.php
+msgid "Timestamp"
+msgstr "Data/Hora"
+
+#: includes/admin/views/tab-connection.php
+msgid "Token Endpoint"
+msgstr "Endpoint do Token"
+
+#: includes/admin/views/tab-logs.php
+#, fuzzy
+#| msgid "Type:"
+msgid "Type"
+msgstr "Tipo:"
+
+#: includes/admin/views/tab-connection.php
+msgid "Username"
+msgstr "Usuário"
+
+#: includes/admin/views/dashboard-widget.php
+msgid "View Settings"
+msgstr "Ver Configurações"
+
+#: includes/admin/views/tab-advanced.php
+msgid "Webhook Secret"
+msgstr "Segredo do Webhook"
+
+#: includes/admin/views/tab-advanced.php
+msgid "Webhook Token"
+msgstr "Token do Webhook"
+
+#: includes/admin/class-settings.php:227
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Você não possui permissões suficientes para acessar esta página."

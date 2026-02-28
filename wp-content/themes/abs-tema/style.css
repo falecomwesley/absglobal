@@ -1,0 +1,39 @@
+/*
+	Theme Name: ABS Tema
+	Theme URI: https://faleagencia.digital
+	Description: Tema personalizado baseado no Hello Elementor, desenvolvido especialmente para ABS Global. Tema leve, minimalista e otimizado para trabalhar perfeitamente com o Elementor. Ideal para criar sites modernos e responsivos com total flexibilidade de design.
+	Author: Fale Agência Digital
+	Author URI: https://faleagencia.digital
+	Template: hello-elementor
+	Version: 1.0.0
+	Requires at least: 6.0
+	Tested up to: 6.9
+	Requires PHP: 7.4
+	License: GNU General Public License v3 or later
+	License URI: https://www.gnu.org/licenses/gpl-3.0.html
+	Text Domain: abs-tema
+	Tags: accessibility-ready, flexible-header, custom-colors, custom-menu, custom-logo, featured-images, rtl-language-support, threaded-comments, translation-ready, elementor
+*/
+
+/* 
+ * ABS Tema - Child Theme do Hello Elementor
+ * Desenvolvido por: Fale Agência Digital
+ * https://faleagencia.digital
+ */
+
+/* Importa os estilos do tema pai */
+@import url('../hello-elementor/style.css');
+
+/* 
+ * Personalizações do ABS Tema
+ * Adicione seus estilos customizados abaixo
+ */
+
+/* Exemplo de customização de cores */
+:root {
+	--abs-primary-color: #0073aa;
+	--abs-secondary-color: #005177;
+	--abs-accent-color: #00a0d2;
+}
+
+/* Adicione suas customizações CSS aqui */

@@ -1,0 +1,342 @@
+/**
+ * Admin Styles for ABS Loja Protheus Connector
+ *
+ * @package ABSLoja\ProtheusConnector
+ */
+
+/* Settings Page */
+.absloja-protheus-settings {
+	max-width: 1200px;
+}
+
+.absloja-protheus-settings .nav-tab-wrapper {
+	margin-bottom: 20px;
+}
+
+.absloja-protheus-settings .tab-content {
+	background: #fff;
+	padding: 20px;
+	border: 1px solid #ccd0d4;
+	border-top: none;
+}
+
+/* Connection Status */
+#connection-status {
+	margin-left: 10px;
+	font-weight: bold;
+}
+
+#connection-status.success {
+	color: #46b450;
+}
+
+#connection-status.error {
+	color: #dc3232;
+}
+
+#connection-status.loading {
+	color: #0073aa;
+}
+
+/* Category Mapping Rows */
+.category-mapping-row {
+	margin-bottom: 10px;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.category-mapping-row input[type="text"] {
+	width: 200px;
+}
+
+.category-mapping-row select {
+	width: 300px;
+}
+
+.category-mapping-row .remove-mapping {
+	color: #dc3232;
+}
+
+/* Status Badges */
+.status-badge {
+	display: inline-block;
+	padding: 3px 8px;
+	border-radius: 3px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.status-badge.status-success {
+	background: #d4edda;
+	color: #155724;
+}
+
+.status-badge.status-error {
+	background: #f8d7da;
+	color: #721c24;
+}
+
+.status-badge.status-retry {
+	background: #fff3cd;
+	color: #856404;
+}
+
+/* Sync Result Messages */
+#sync-result {
+	margin-top: 15px;
+	padding: 10px;
+	border-left: 4px solid #0073aa;
+	background: #f0f6fc;
+}
+
+#sync-result.success {
+	border-left-color: #46b450;
+	background: #ecf7ed;
+}
+
+#sync-result.error {
+	border-left-color: #dc3232;
+	background: #fef7f7;
+}
+
+/* Log Details Modal */
+#log-details-modal {
+	position: fixed;
+	z-index: 100000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.log-details-content {
+	background-color: #fefefe;
+	margin: 5% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	max-width: 900px;
+	border-radius: 5px;
+	position: relative;
+}
+
+.close-modal {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
+	line-height: 20px;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+	color: #000;
+}
+
+#log-details-body {
+	margin-top: 20px;
+}
+
+#log-details-body pre {
+	background: #f5f5f5;
+	padding: 15px;
+	border-radius: 3px;
+	overflow-x: auto;
+	max-height: 400px;
+}
+
+#log-details-body h3 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+}
+
+/* Dashboard Widget */
+.absloja-protheus-dashboard-widget table {
+	margin-bottom: 15px;
+}
+
+.absloja-protheus-dashboard-widget table td {
+	padding: 8px;
+}
+
+.absloja-protheus-dashboard-widget .success {
+	color: #46b450;
+	font-weight: bold;
+}
+
+.absloja-protheus-dashboard-widget .error {
+	color: #dc3232;
+	font-weight: bold;
+}
+
+.absloja-protheus-dashboard-widget h4 {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.absloja-protheus-dashboard-widget ul {
+	margin-left: 20px;
+	list-style: disc;
+}
+
+.absloja-protheus-dashboard-widget ul li {
+	margin-bottom: 5px;
+}
+
+/* Retry Queue Table */
+.retry-now {
+	background: #0073aa;
+	color: #fff;
+	border-color: #0073aa;
+}
+
+.retry-now:hover {
+	background: #005a87;
+	border-color: #005a87;
+	color: #fff;
+}
+
+/* Loading Spinner */
+.absloja-loading {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	border: 2px solid #f3f3f3;
+	border-top: 2px solid #0073aa;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin-left: 10px;
+	vertical-align: middle;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+	.category-mapping-row {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.category-mapping-row input[type="text"],
+	.category-mapping-row select {
+		width: 100%;
+	}
+
+	.log-details-content {
+		width: 95%;
+		margin: 10% auto;
+	}
+}
+
+/* Notices */
+.absloja-notice {
+	padding: 12px;
+	margin: 15px 0;
+	border-left: 4px solid;
+	background: #fff;
+}
+
+.absloja-notice.notice-success {
+	border-left-color: #46b450;
+}
+
+.absloja-notice.notice-error {
+	border-left-color: #dc3232;
+}
+
+.absloja-notice.notice-warning {
+	border-left-color: #ffb900;
+}
+
+.absloja-notice.notice-info {
+	border-left-color: #0073aa;
+}
+
+/* Webhook Endpoints */
+.absloja-protheus-settings code {
+	background: #f5f5f5;
+	padding: 5px 10px;
+	border-radius: 3px;
+	display: inline-block;
+	margin: 5px 0;
+	font-size: 13px;
+	word-break: break-all;
+}
+
+/* Form Tables */
+.absloja-protheus-settings .form-table th {
+	width: 250px;
+}
+
+.absloja-protheus-settings .widefat th,
+.absloja-protheus-settings .widefat td {
+	padding: 12px;
+}
+
+/* Buttons */
+.absloja-protheus-settings .button-primary {
+	background: #0073aa;
+	border-color: #0073aa;
+	text-shadow: none;
+	box-shadow: none;
+}
+
+.absloja-protheus-settings .button-primary:hover {
+	background: #005a87;
+	border-color: #005a87;
+}
+
+/* Filter Form */
+.tablenav.top form {
+	display: inline-block;
+}
+
+.tablenav.top label {
+	margin-left: 10px;
+	margin-right: 5px;
+}
+
+.tablenav.top input[type="date"],
+.tablenav.top select {
+	margin-right: 5px;
+}
+
+/* Pagination */
+.tablenav-pages {
+	float: right;
+}
+
+.tablenav-pages .page-numbers {
+	padding: 5px 10px;
+	border: 1px solid #ddd;
+	background: #fff;
+	text-decoration: none;
+	margin: 0 2px;
+}
+
+.tablenav-pages .page-numbers.current {
+	background: #0073aa;
+	color: #fff;
+	border-color: #0073aa;
+}
+
+.tablenav-pages .page-numbers:hover {
+	background: #f0f0f0;
+}

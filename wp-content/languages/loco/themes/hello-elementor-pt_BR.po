@@ -1,0 +1,356 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ABS Tema\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-27 18:20+0000\n"
+"PO-Revision-Date: 2026-02-27 18:20+0000\n"
+"Last-Translator: Fale Agência Digital\n"
+"Language-Team: Português do Brasil\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.8.1; wp-6.9.1; php-8.2.0\n"
+"X-Domain: hello-elementor"
+
+#: functions.php:42 includes/settings/settings-header.php:47
+#: modules/admin-home/rest/admin-config.php:196
+msgid "Header"
+msgstr "Cabeçalho"
+
+#: functions.php:43 includes/settings/settings-footer.php:46
+#: modules/admin-home/rest/admin-config.php:203
+msgid "Footer"
+msgstr "Rodapé"
+
+#: comments.php:32
+msgctxt "comments title"
+msgid "One Response"
+msgstr "Uma Resposta"
+
+#. %s: Number of comments.
+#: comments.php:37
+#, php-format
+msgctxt "comments title"
+msgid "%s Response"
+msgid_plural "%s Responses"
+msgstr[0] "%s Resposta"
+msgstr[1] "%s Respostas"
+
+#: header.php:30
+msgid "Skip to content"
+msgstr "Pular para o conteúdo"
+
+#: includes/customizer-functions.php:17 includes/elementor-functions.php:216
+msgid "Header & Footer"
+msgstr "Cabeçalho e Rodapé"
+
+#: includes/customizer-functions.php:60
+msgid "Customize your entire website with Elementor Pro"
+msgstr "Personalize todo o seu site com Elementor Pro"
+
+#: includes/customizer-functions.php:61
+msgid ""
+"Build and customize every part of your website, including Theme Parts with "
+"Elementor Pro."
+msgstr ""
+"Construa e personalize cada parte do seu site, incluindo Partes do Tema com "
+"Elementor Pro."
+
+#: includes/customizer-functions.php:62
+#: includes/settings/settings-header.php:775
+#: includes/settings/settings-footer.php:742
+#: modules/admin-home/rest/promotions.php:27
+msgid "Upgrade Now"
+msgstr "Atualizar Agora"
+
+#: includes/module-base.php:259 includes/module-base.php:270
+msgid "Something went wrong."
+msgstr "Algo deu errado."
+
+#: includes/elementor-functions.php:217
+msgid "Hello Theme"
+msgstr "ABS Tema"
+
+#: includes/elementor-functions.php:220
+msgid ""
+"Customize and style the builtin Hello Theme's cross-site header & footer "
+"from the Elementor \"Site Settings\" panel."
+msgstr ""
+"Personalize e estilize o cabeçalho e rodapé do ABS Tema "
+"no painel \"Configurações do Site\" do Elementor."
+
+#: includes/elementor-functions.php:222
+msgid "Learn More"
+msgstr "Saiba Mais"
+
+#: template-parts/404.php:16
+msgid "The page can&rsquo;t be found."
+msgstr "A página não pode ser encontrada."
+
+#: template-parts/404.php:21
+msgid "It looks like nothing was found at this location."
+msgstr "Parece que nada foi encontrado neste local."
+
+#. %s: HTML entity for arrow character.
+#: template-parts/archive.php:50 template-parts/search.php:56
+#, php-format
+msgid "%s Previous"
+msgstr "%s Anterior"
+
+#. %s: HTML entity for arrow character.
+#: template-parts/archive.php:54 template-parts/search.php:60
+#, php-format
+msgid "Next %s"
+msgstr "Próximo %s"
+
+#: template-parts/search.php:17
+msgid "Search results for: "
+msgstr "Resultados da busca por: "
+
+#: template-parts/search.php:43
+msgid "It seems we can't find what you're looking for."
+msgstr "Parece que não conseguimos encontrar o que você está procurando."
+
+#: template-parts/header.php:30 template-parts/dynamic-footer.php:33
+#: template-parts/dynamic-header.php:39
+#: modules/admin-home/components/admin-menu-controller.php:32
+#: modules/admin-home/components/admin-menu-controller.php:33
+msgid "Home"
+msgstr "Início"
+
+#: template-parts/header.php:43 template-parts/dynamic-header.php:53
+msgid "Main menu"
+msgstr "Menu principal"
+
+#: template-parts/footer.php:20 template-parts/dynamic-footer.php:47
+msgid "Footer menu"
+msgstr "Menu do rodapé"
+
+#: template-parts/single.php:30
+msgid "Tagged "
+msgstr "Marcado "
+
+#: template-parts/dynamic-header.php:66
+msgid "Mobile menu"
+msgstr "Menu mobile"
+
+#: includes/settings/settings-header.php:24
+msgid "Hello Theme Header"
+msgstr "Cabeçalho do ABS Tema"
+
+#: includes/settings/settings-header.php:55
+#: includes/settings/settings-header.php:286
+#: includes/settings/settings-footer.php:54
+#: includes/settings/settings-footer.php:291
+#: modules/admin-home/rest/admin-config.php:292
+msgid "Site Logo"
+msgstr "Logo do Site"
+
+#: includes/settings/settings-header.php:57
+#: includes/settings/settings-header.php:68
+#: includes/settings/settings-header.php:79
+#: includes/settings/settings-footer.php:56
+#: includes/settings/settings-footer.php:68
+#: includes/settings/settings-footer.php:80
+#: includes/settings/settings-footer.php:92
+msgid "Show"
+msgstr "Mostrar"
+
+#: includes/settings/settings-header.php:58
+#: includes/settings/settings-header.php:69
+#: includes/settings/settings-header.php:80
+#: includes/settings/settings-footer.php:57
+#: includes/settings/settings-footer.php:69
+#: includes/settings/settings-footer.php:81
+#: includes/settings/settings-footer.php:93
+msgid "Hide"
+msgstr "Ocultar"
+
+#: includes/settings/settings-header.php:66
+#: includes/settings/settings-header.php:497
+#: includes/settings/settings-footer.php:66
+#: includes/settings/settings-footer.php:495
+msgid "Tagline"
+msgstr "Slogan"
+
+#: includes/settings/settings-header.php:77
+#: includes/settings/settings-header.php:572
+#: includes/settings/settings-header.php:624
+#: includes/settings/settings-footer.php:78
+#: includes/settings/settings-footer.php:563
+#: includes/settings/settings-footer.php:608
+msgid "Menu"
+msgstr "Menu"
+
+#: includes/settings/settings-header.php:107
+#: includes/settings/settings-footer.php:122
+msgid "Layout"
+msgstr "Layout"
+
+#: includes/settings/settings-header.php:110
+#: includes/settings/settings-footer.php:125
+msgid "Inverted"
+msgstr "Invertido"
+
+#: includes/settings/settings-header.php:114
+#: includes/settings/settings-footer.php:129
+msgid "Centered"
+msgstr "Centralizado"
+
+#: includes/settings/settings-header.php:118
+#: includes/settings/settings-footer.php:133
+msgid "Default"
+msgstr "Padrão"
+
+#: includes/settings/settings-header.php:196
+#: includes/settings/settings-footer.php:211
+msgid "Width"
+msgstr "Largura"
+
+#: includes/settings/settings-header.php:198
+#: includes/settings/settings-footer.php:213
+msgid "Boxed"
+msgstr "Em Caixa"
+
+#: includes/settings/settings-header.php:199
+#: includes/settings/settings-footer.php:214
+msgid "Full Width"
+msgstr "Largura Total"
+
+#: includes/settings/settings-header.php:273
+#: includes/settings/settings-footer.php:278
+msgid "Background"
+msgstr "Fundo"
+
+#: includes/settings/settings-header.php:339
+#: includes/settings/settings-footer.php:337
+msgid "Type"
+msgstr "Tipo"
+
+#: includes/settings/settings-header.php:343
+#: includes/settings/settings-footer.php:341
+msgid "Logo"
+msgstr "Logo"
+
+#: includes/settings/settings-header.php:344
+#: includes/settings/settings-footer.php:342
+msgid "Title"
+msgstr "Título"
+
+#: includes/settings/settings-header.php:381
+#: includes/settings/settings-header.php:546
+#: includes/settings/settings-header.php:724
+#: includes/settings/settings-footer.php:379
+#: includes/settings/settings-footer.php:537
+#: includes/settings/settings-footer.php:630
+#: includes/settings/settings-footer.php:692
+msgid "Typography"
+msgstr "Tipografia"
+
+#: includes/settings/settings-header.php:421
+#: includes/settings/settings-footer.php:419
+msgid "Normal"
+msgstr "Normal"
+
+#: includes/settings/settings-header.php:449
+#: includes/settings/settings-footer.php:447
+msgid "Hover"
+msgstr "Hover"
+
+#: includes/settings/settings-header.php:681
+#: includes/settings/settings-footer.php:618
+msgid "Color"
+msgstr "Cor"
+
+#: includes/settings/settings-footer.php:23
+msgid "Hello Theme Footer"
+msgstr "Rodapé do ABS Tema"
+
+#: includes/settings/settings-footer.php:90
+#: includes/settings/settings-footer.php:651
+msgid "Copyright"
+msgstr "Copyright"
+
+#: includes/settings/settings-footer.php:669
+msgid "Text"
+msgstr "Texto"
+
+#: includes/settings/settings-footer.php:670
+msgid "All rights reserved"
+msgstr "Todos os direitos reservados"
+
+#: modules/admin-home/components/admin-menu-controller.php:21
+#: modules/admin-home/components/admin-menu-controller.php:22
+msgid "Hello"
+msgstr "ABS Tema"
+
+#: modules/admin-home/components/admin-menu-controller.php:44
+#: modules/admin-home/components/admin-menu-controller.php:45
+#: modules/admin-home/rest/admin-config.php:212
+msgid "Theme Builder"
+msgstr "Construtor de Tema"
+
+#: modules/admin-home/components/settings-controller.php:140
+#: modules/admin-home/components/settings-controller.php:141
+#: modules/admin-home/rest/admin-config.php:185
+msgid "Settings"
+msgstr "Configurações"
+
+#: modules/admin-home/rest/admin-config.php:180
+msgid "Add New Page"
+msgstr "Adicionar Nova Página"
+
+#: modules/admin-home/rest/admin-config.php:257
+msgid "Edit"
+msgstr "Editar"
+
+#: modules/admin-home/rest/admin-config.php:261
+msgid "Add New"
+msgstr "Adicionar Novo"
+
+#: modules/admin-home/rest/admin-config.php:286
+msgid "Site Name"
+msgstr "Nome do Site"
+
+#: modules/admin-home/rest/admin-config.php:337
+msgid "Thanks for installing the Hello Theme!"
+msgstr "Obrigado por instalar o ABS Tema!"
+
+#: modules/admin-home/rest/admin-config.php:338
+msgid ""
+"Welcome to Hello Theme—a lightweight, blank canvas designed to integrate "
+"seamlessly with Elementor, the most popular, no-code visual website builder. "
+"By installing and activating Elementor, you'll unlock the power to craft a "
+"professional website with advanced features and functionalities."
+msgstr ""
+"Bem-vindo ao ABS Tema—um tema leve e minimalista projetado para integrar "
+"perfeitamente com o Elementor, o construtor visual de sites mais popular. "
+"Ao instalar e ativar o Elementor, você desbloqueará o poder de criar um "
+"site profissional com recursos e funcionalidades avançadas."
+
+#. Name of the theme
+msgid "Hello Elementor"
+msgstr "ABS Tema"
+
+#. Description of the theme
+msgid ""
+"Hello Elementor is a lightweight and minimalist WordPress theme that was "
+"built specifically to work seamlessly with the Elementor site builder plugin."
+" The theme is free, open-source, and designed for users who want a flexible, "
+"easy-to-use, and customizable website. The theme, which is optimized for "
+"performance, provides a solid foundation for users to build their own unique "
+"designs using the Elementor drag-and-drop site builder. Its simplicity and "
+"flexibility make it a great choice for both beginners and experienced Web "
+"Creators."
+msgstr ""
+"ABS Tema é um tema WordPress leve e minimalista construído especificamente "
+"para trabalhar perfeitamente com o plugin Elementor. O tema é gratuito, "
+"open-source e projetado para usuários que desejam um site flexível, fácil "
+"de usar e personalizável. O tema, que é otimizado para performance, fornece "
+"uma base sólida para os usuários construírem seus próprios designs únicos "
+"usando o construtor visual Elementor. Sua simplicidade e flexibilidade o "
+"tornam uma ótima escolha tanto para iniciantes quanto para criadores web "
+"experientes."

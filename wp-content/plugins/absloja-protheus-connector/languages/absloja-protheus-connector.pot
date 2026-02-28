@@ -1,0 +1,385 @@
+# Copyright (C) 2024 ABS Loja Protheus Connector
+# This file is distributed under the same license as the ABS Loja Protheus Connector package.
+msgid ""
+msgstr ""
+"Project-Id-Version: ABS Loja Protheus Connector 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/absloja-protheus-connector\n"
+"POT-Creation-Date: 2024-01-01 00:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: includes/admin/class-admin.php:90
+msgid "Protheus Connector"
+msgstr ""
+
+#: includes/admin/class-admin.php:131
+msgid "Testing connection..."
+msgstr ""
+
+#: includes/admin/class-admin.php:132
+msgid "Syncing..."
+msgstr ""
+
+#: includes/admin/class-admin.php:133
+msgid "Success!"
+msgstr ""
+
+#: includes/admin/class-admin.php:134
+msgid "Error:"
+msgstr ""
+
+#: includes/admin/class-admin.php:135
+msgid "Are you sure you want to retry this operation?"
+msgstr ""
+
+#: includes/admin/class-admin.php:136
+msgid "Export logs to CSV?"
+msgstr ""
+
+#: includes/admin/class-admin.php:152
+msgid "Protheus Connector Status"
+msgstr ""
+
+#: includes/admin/class-admin.php:190
+msgid "Never"
+msgstr ""
+
+#: includes/admin/class-admin.php:234
+msgid "Permission denied"
+msgstr ""
+
+#: includes/admin/class-admin.php:242
+msgid "Connection successful!"
+msgstr ""
+
+#: includes/admin/class-admin.php:248
+msgid "Connection failed. Please check your credentials."
+msgstr ""
+
+#: includes/admin/class-admin.php:274
+msgid "Catalog sync completed! %d products synced."
+msgstr ""
+
+#: includes/admin/class-admin.php:285
+msgid "Catalog sync failed: %s"
+msgstr ""
+
+#: includes/admin/class-admin.php:312
+msgid "Stock sync completed! %d products updated."
+msgstr ""
+
+#: includes/admin/class-admin.php:323
+msgid "Stock sync failed: %s"
+msgstr ""
+
+#: includes/admin/class-admin.php:344
+msgid "Invalid retry ID"
+msgstr ""
+
+#: includes/admin/class-admin.php:352
+msgid "Retry completed successfully!"
+msgstr ""
+
+#: includes/admin/class-admin.php:358
+msgid "Retry failed. Check logs for details."
+msgstr ""
+
+#: includes/admin/class-admin.php:407
+msgid "Export failed: %s"
+msgstr ""
+
+#: includes/admin/class-settings.php:107
+msgid "Please enter a valid API URL."
+msgstr ""
+
+#: includes/admin/class-settings.php:227
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: includes/admin/class-settings.php:237
+msgid "Connection"
+msgstr ""
+
+#: includes/admin/class-settings.php:238
+msgid "Mappings"
+msgstr ""
+
+#: includes/admin/class-settings.php:239
+msgid "Sync Schedule"
+msgstr ""
+
+#: includes/admin/class-settings.php:240
+msgid "Logs"
+msgstr ""
+
+#: includes/admin/class-settings.php:241
+msgid "Advanced"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "API URL"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Authentication Type"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Basic Authentication"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "OAuth2"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Username"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Password"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Client ID"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Client Secret"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Token Endpoint"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Test Connection"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Connection Status"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Connected"
+msgstr ""
+
+#: includes/admin/views/tab-connection.php
+msgid "Not Connected"
+msgstr ""
+
+#: includes/admin/views/tab-mappings.php
+msgid "Payment Method Mappings"
+msgstr ""
+
+#: includes/admin/views/tab-mappings.php
+msgid "Category Mappings"
+msgstr ""
+
+#: includes/admin/views/tab-mappings.php
+msgid "TES Rules by State"
+msgstr ""
+
+#: includes/admin/views/tab-mappings.php
+msgid "Status Mappings"
+msgstr ""
+
+#: includes/admin/views/tab-mappings.php
+msgid "Reset to Defaults"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "Catalog Sync Frequency"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "Stock Sync Frequency"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "15 minutes"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "30 minutes"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "1 hour"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "6 hours"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "12 hours"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "24 hours"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "Sync Catalog Now"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "Sync Stock Now"
+msgstr ""
+
+#: includes/admin/views/tab-schedule.php
+msgid "Last Sync"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Filter Logs"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Date From"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Date To"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Type"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Status"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Apply Filters"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Export to CSV"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Timestamp"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Operation"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "Message"
+msgstr ""
+
+#: includes/admin/views/tab-logs.php
+msgid "No logs found."
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Batch Size"
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Retry Interval (seconds)"
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Maximum Retries"
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Log Retention (days)"
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Webhook Token"
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Webhook Secret"
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Image URL Pattern"
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Pending Retries"
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Retry Now"
+msgstr ""
+
+#: includes/admin/views/tab-advanced.php
+msgid "Mark as Failed"
+msgstr ""
+
+#: includes/admin/views/dashboard-widget.php
+msgid "Last Catalog Sync"
+msgstr ""
+
+#: includes/admin/views/dashboard-widget.php
+msgid "Last Stock Sync"
+msgstr ""
+
+#: includes/admin/views/dashboard-widget.php
+msgid "Products Synced"
+msgstr ""
+
+#: includes/admin/views/dashboard-widget.php
+msgid "Orders Synced"
+msgstr ""
+
+#: includes/admin/views/dashboard-widget.php
+msgid "Recent Errors (24h)"
+msgstr ""
+
+#: includes/admin/views/dashboard-widget.php
+msgid "Pending Retries"
+msgstr ""
+
+#: includes/admin/views/dashboard-widget.php
+msgid "Orders Pending Review"
+msgstr ""
+
+#: includes/admin/views/dashboard-widget.php
+msgid "View Settings"
+msgstr ""
+
+#: includes/modules/class-error-handler.php
+msgid "TES not found for state: %s"
+msgstr ""
+
+#: includes/modules/class-error-handler.php
+msgid "Insufficient stock for product: %s"
+msgstr ""
+
+#: includes/modules/class-error-handler.php
+msgid "Invalid CPF/CNPJ: %s"
+msgstr ""
+
+#: includes/modules/class-error-handler.php
+msgid "API connection timeout"
+msgstr ""
+
+#: includes/modules/class-error-handler.php
+msgid "API authentication failed"
+msgstr ""
+
+#: includes/modules/class-error-handler.php
+msgid "Protheus API error: %s"
+msgstr ""
+
+#: includes/modules/class-retry-manager.php
+msgid "Retry limit exceeded for operation: %s"
+msgstr ""
+
+#: includes/modules/class-retry-manager.php
+msgid "Operation failed permanently after %d attempts"
+msgstr ""
