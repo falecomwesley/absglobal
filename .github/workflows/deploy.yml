@@ -20,5 +20,11 @@ jobs:
           command_timeout: 30m
           script: |
             cd /var/www/html/absloja
+            if [ -f wp-config.php ]; then cp wp-config.php /tmp/wp-config.php.deploy-backup; fi
             git pull origin main
+            if [ ! -f wp-config.php ] && [ -f /tmp/wp-config.php.deploy-backup ]; then
+              mv /tmp/wp-config.php.deploy-backup wp-config.php
+              chown www-data:www-data wp-config.php
+              chmod 640 wp-config.php
+            fi
             echo "✅ Deploy concluído!"
