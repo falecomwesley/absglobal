@@ -40,7 +40,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Testar falha de autenticação
     - _Requirements: 7.5_
 
-  - [-] 2.4 Escrever teste de propriedade para armazenamento seguro
+  - [x] 2.4 Escrever teste de propriedade para armazenamento seguro
     - **Property 33: Secure Credential Storage**
     - **Validates: Requirements 7.3**
 
@@ -61,14 +61,14 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Retornar estrutura padronizada de erro
     - _Requirements: 7.5, 12.3_
 
-  - [ ]* 3.3 Escrever testes unitários para Protheus_Client
+  - [x] 3.3 Escrever testes unitários para Protheus_Client
     - Testar requisições GET e POST bem-sucedidas
     - Testar tratamento de timeout
     - Testar tratamento de erro 401
     - Testar tratamento de erro 500
     - Testar parsing de JSON inválido
 
-  - [ ]* 3.4 Escrever teste de propriedade para inclusão de headers
+  - [x] 3.4 Escrever teste de propriedade para inclusão de headers
     - **Property 34: Authentication Headers Inclusion**
     - **Validates: Requirements 7.4**
 
@@ -107,13 +107,13 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Agendar execução diária via WP-Cron
     - _Requirements: 8.8_
 
-  - [ ]* 4.6 Escrever testes unitários para Logger
+  - [x] 4.6 Escrever testes unitários para Logger
     - Testar criação de log entries
     - Testar filtragem de logs
     - Testar exportação CSV
     - Testar limpeza automática
 
-  - [ ]* 4.7 Escrever testes de propriedade para logging
+  - [x] 4.7 Escrever testes de propriedade para logging
     - **Property 36: API Request Logging**
     - **Property 37: Webhook Request Logging**
     - **Property 38: Sync Operation Logging**
@@ -150,13 +150,13 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Incluir detalhes da operação e último erro
     - _Requirements: 9.4_
 
-  - [ ]* 5.5 Escrever testes unitários para Retry_Manager
+  - [x] 5.5 Escrever testes unitários para Retry_Manager
     - Testar agendamento de retry
     - Testar processamento de retry bem-sucedido
     - Testar limite de tentativas
     - Testar remoção da fila após sucesso
 
-  - [ ]* 5.6 Escrever testes de propriedade para retry
+  - [x] 5.6 Escrever testes de propriedade para retry
     - **Property 42: Retry Scheduling on Failure**
     - **Property 43: Maximum Retry Attempts**
     - **Property 44: Permanent Failure Notification**
@@ -194,13 +194,13 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Usar prefixo absloja_protheus_ para options
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6_
 
-  - [ ]* 6.5 Escrever testes unitários para Mapping_Engine
+  - [x] 6.5 Escrever testes unitários para Mapping_Engine
     - Testar recuperação de mapeamentos
     - Testar validação de mapeamentos inválidos
     - Testar persistência de mapeamentos
     - Testar fallback para mapeamentos padrão
 
-  - [ ]* 6.6 Escrever teste de propriedade para validação
+  - [x] 6.6 Escrever teste de propriedade para validação
     - **Property 46: Mapping Validation**
     - **Validates: Requirements 10.8**
 
@@ -227,14 +227,14 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Agendar retry via Retry_Manager
     - _Requirements: 2.6_
 
-  - [ ]* 7.4 Escrever testes unitários para Customer_Sync
+  - [x] 7.4 Escrever testes unitários para Customer_Sync
     - Testar verificação de cliente existente
     - Testar criação de novo cliente
     - Testar limpeza de CPF/CNPJ
     - Testar concatenação de nome
     - Testar determinação de tipo (F/J)
 
-  - [ ]* 7.5 Escrever testes de propriedade para Customer_Sync
+  - [x] 7.5 Escrever testes de propriedade para Customer_Sync
     - **Property 8: Customer Existence Check**
     - **Property 9: Customer Creation on Non-Existence**
     - **Property 10: Customer Field Mapping**
@@ -300,7 +300,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Exibir notice administrativa explicando bloqueio
     - _Requirements: 15.5_
 
-  - [ ]* 8.9 Escrever testes unitários para Order_Sync
+  - [x] 8.9 Escrever testes unitários para Order_Sync
     - Testar sync de pedido bem-sucedido
     - Testar mapeamento de campos SC5/SC6
     - Testar determinação de TES por estado
@@ -308,7 +308,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Testar tratamento de erro de TES
     - Testar tratamento de estoque insuficiente
 
-  - [ ]* 8.10 Escrever testes de propriedade para Order_Sync
+  - [x] 8.10 Escrever testes de propriedade para Order_Sync
     - **Property 1: Order Sync Trigger on Status Change**
     - **Property 2: Complete Order Field Mapping**
     - **Property 3: Protheus Order ID Storage**
@@ -391,7 +391,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Agendar execução baseada em frequência configurada
     - _Requirements: 11.1, 11.2, 11.3, 11.4_
 
-  - [ ]* 10.8 Escrever testes unitários para Catalog_Sync
+  - [x] 10.8 Escrever testes unitários para Catalog_Sync
     - Testar criação de novo produto
     - Testar atualização de produto existente
     - Testar mapeamento de campos
@@ -399,7 +399,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Testar ocultação de produto com estoque zero
     - Testar download e anexação de imagem
 
-  - [ ]* 10.9 Escrever testes de propriedade para Catalog_Sync
+  - [x] 10.9 Escrever testes de propriedade para Catalog_Sync
     - **Property 14: Product Data Fetching**
     - **Property 15: Product Field Mapping**
     - **Property 16: Product Update on Existing SKU**
@@ -458,7 +458,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Logar erros de autenticação
     - _Requirements: 8.2_
 
-  - [ ]* 11.6 Escrever testes unitários para Webhook_Handler
+  - [x] 11.6 Escrever testes unitários para Webhook_Handler
     - Testar autenticação bem-sucedida
     - Testar falha de autenticação (401)
     - Testar atualização de status de pedido
@@ -466,7 +466,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Testar atualização de estoque
     - Testar ocultação de produto com estoque zero
 
-  - [ ]* 11.7 Escrever testes de propriedade para Webhook_Handler
+  - [x] 11.7 Escrever testes de propriedade para Webhook_Handler
     - **Property 25: Webhook Authentication**
     - **Property 26: Order Location by WooCommerce ID**
     - **Property 27: Order Status Update**
@@ -561,13 +561,13 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Botão "Mark as Failed" para desistir de retry
     - _Requirements: 9.6, 9.7_
 
-  - [ ]* 13.10 Escrever testes unitários para Admin
+  - [x] 13.10 Escrever testes unitários para Admin
     - Testar registro de menu
     - Testar validação de configurações
     - Testar salvamento de settings
     - Testar test connection
 
-  - [ ]* 13.11 Escrever teste de propriedade para validação de inputs
+  - [x] 13.11 Escrever teste de propriedade para validação de inputs
     - **Property 53: Configuration Input Validation**
     - **Validates: Requirements 13.6**
 
@@ -610,13 +610,13 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Admin note em pedidos com erro
     - _Requirements: 9.4, 12.4_
 
-  - [ ]* 15.4 Escrever testes unitários para tratamento de erros
+  - [x] 15.4 Escrever testes unitários para tratamento de erros
     - Testar detecção de timeout
     - Testar detecção de erro de TES
     - Testar detecção de estoque insuficiente
     - Testar adição de admin notes
 
-  - [ ]* 15.5 Escrever testes de propriedade para erros
+  - [x] 15.5 Escrever testes de propriedade para erros
     - **Property 35: Authentication Failure Handling**
     - **Property 51: API Unreachable Error Handling**
     - **Property 52: Business Error Order Notes**
@@ -641,7 +641,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Remover todos os eventos agendados
     - Implementar no Deactivator
 
-  - [ ]* 16.4 Escrever teste de propriedade para agendamento
+  - [x] 16.4 Escrever teste de propriedade para agendamento
     - **Property 47: WP-Cron Scheduling**
     - **Property 48: Manual Sync Execution**
     - **Validates: Requirements 11.4, 11.6**
@@ -690,8 +690,8 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Criar ProtheusGenerators::sc5()
     - Criar ProtheusGenerators::sb1()
 
-- [~] 19. Escrever testes de integração
-  - [ ]* 19.1 Escrever teste de integração para fluxo completo de pedido
+- [x] 19. Escrever testes de integração
+  - [x] 19.1 Escrever teste de integração para fluxo completo de pedido
     - Criar pedido WooCommerce
     - Verificar criação/verificação de cliente
     - Verificar envio de pedido ao Protheus
@@ -700,7 +700,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Simular webhook de status
     - Verificar atualização de status no WooCommerce
 
-  - [ ]* 19.2 Escrever teste de integração para sincronização de catálogo
+  - [x] 19.2 Escrever teste de integração para sincronização de catálogo
     - Simular resposta da API com produtos
     - Executar sync_products()
     - Verificar criação de produtos no WooCommerce
@@ -709,7 +709,7 @@ A implementação seguirá uma abordagem incremental, construindo primeiro a inf
     - Executar sync_stock()
     - Verificar atualização de quantidades
 
-  - [ ]* 19.3 Escrever teste de integração para sistema de retry
+  - [x] 19.3 Escrever teste de integração para sistema de retry
     - Simular falha de API
     - Verificar agendamento de retry
     - Simular execução de WP-Cron

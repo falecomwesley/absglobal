@@ -1198,5 +1198,484 @@ class LoggerTest extends TestCase {
 
 		$this->assertEquals( 50, $result );
 	}
+
+	/**
+	 * Test export_logs_csv generates CSV with headers
+	 */
+	public function test_export_logs_csv_generates_csv_with_headers() {
+		global $wpdb;
+		$wpdb         = Mockery::mock( 'wpdb' );
+		$wpdb->prefix = 'wp_';
+
+		$mock_logs = array(
+			array(
+				'id'          => 1,
+				'timestamp'   => '2024-01-15 10:00:00',
+				'type'        => 'api_request',
+				'operation'   => '/api/v1/orders',
+				'status'      => 'success',
+				'message'     => 'API request to /api/v1/orders',
+				'payload'     => '{"order_id":123}',
+				'response'    => '{"success":true}',
+				'duration'    => 1.5,
+				'error_trace' => null,
+				'context'     => null,
+			),
+		);
+
+		Functions\expect( 'wp_parse_args' )
+			->once()
+			->andReturnUsing( function( $args, $defaults ) {
+				return array_merge( $defaults, $args );
+			} );
+
+		Functions\expect( 'absint' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return abs( (int) $value );
+			} );
+
+		Functions\expect( 'esc_sql' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return $value;
+			} );
+
+		Functions\expect( 'wp_json_encode' )
+			->never(); // Already JSON strings in mock data
+
+		$wpdb->shouldReceive( 'get_var' )
+			->once()
+			->andReturn( 1 );
+
+		$wpdb->shouldReceive( 'get_results' )
+			->once()
+			->andReturn( $mock_logs );
+
+		$logger = new Logger();
+		$csv    = $logger->export_logs_csv();
+
+		// Verify CSV structure
+		$this->assertIsString( $csv );
+		$this->assertNotEmpty( $csv );
+
+		// Verify headers are present
+		$this->assertStringContainsString( '"ID"', $csv );
+		$this->assertStringContainsString( '"Timestamp"', $csv );
+		$this->assertStringContainsString( '"Type"', $csv );
+		$this->assertStringContainsString( '"Operation"', $csv );
+		$this->assertStringContainsString( '"Status"', $csv );
+		$this->assertStringContainsString( '"Message"', $csv );
+		$this->assertStringContainsString( '"Payload"', $csv );
+		$this->assertStringContainsString( '"Response"', $csv );
+		$this->assertStringContainsString( '"Duration"', $csv );
+		$this->assertStringContainsString( '"Error Trace"', $csv );
+		$this->assertStringContainsString( '"Context"', $csv );
+
+		// Verify data row is present
+		$this->assertStringContainsString( '"1"', $csv );
+		$this->assertStringContainsString( '"2024-01-15 10:00:00"', $csv );
+		$this->assertStringContainsString( '"api_request"', $csv );
+	}
+
+	/**
+	 * Test export_logs_csv includes all log entries
+	 */
+	public function test_export_logs_csv_includes_all_log_entries() {
+		global $wpdb;
+		$wpdb         = Mockery::mock( 'wpdb' );
+		$wpdb->prefix = 'wp_';
+
+		$mock_logs = array(
+			array(
+				'id'          => 1,
+				'timestamp'   => '2024-01-15 10:00:00',
+				'type'        => 'api_request',
+				'operation'   => '/api/v1/orders',
+				'status'      => 'success',
+				'message'     => 'API request',
+				'payload'     => '{"order_id":123}',
+				'response'    => '{"success":true}',
+				'duration'    => 1.5,
+				'error_trace' => null,
+				'context'     => null,
+			),
+			array(
+				'id'          => 2,
+				'timestamp'   => '2024-01-15 10:05:00',
+				'type'        => 'webhook',
+				'operation'   => 'order_status',
+				'status'      => 'success',
+				'message'     => 'Webhook received',
+				'payload'     => '{"status":"approved"}',
+				'response'    => '{"success":true}',
+				'duration'    => null,
+				'error_trace' => null,
+				'context'     => null,
+			),
+			array(
+				'id'          => 3,
+				'timestamp'   => '2024-01-15 10:10:00',
+				'type'        => 'error',
+				'operation'   => 'order_sync',
+				'status'      => 'error',
+				'message'     => 'Sync failed',
+				'payload'     => '{"order_id":456}',
+				'response'    => null,
+				'duration'    => null,
+				'error_trace' => 'Exception trace here',
+				'context'     => '{"user_id":789}',
+			),
+		);
+
+		Functions\expect( 'wp_parse_args' )
+			->once()
+			->andReturnUsing( function( $args, $defaults ) {
+				return array_merge( $defaults, $args );
+			} );
+
+		Functions\expect( 'absint' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return abs( (int) $value );
+			} );
+
+		Functions\expect( 'esc_sql' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return $value;
+			} );
+
+		$wpdb->shouldReceive( 'get_var' )
+			->once()
+			->andReturn( 3 );
+
+		$wpdb->shouldReceive( 'get_results' )
+			->once()
+			->andReturn( $mock_logs );
+
+		$logger = new Logger();
+		$csv    = $logger->export_logs_csv();
+
+		// Count lines (header + 3 data rows = 4 lines)
+		$lines = explode( "\n", trim( $csv ) );
+		$this->assertCount( 4, $lines );
+
+		// Verify all log IDs are present
+		$this->assertStringContainsString( '"1"', $csv );
+		$this->assertStringContainsString( '"2"', $csv );
+		$this->assertStringContainsString( '"3"', $csv );
+
+		// Verify different types are present
+		$this->assertStringContainsString( '"api_request"', $csv );
+		$this->assertStringContainsString( '"webhook"', $csv );
+		$this->assertStringContainsString( '"error"', $csv );
+	}
+
+	/**
+	 * Test export_logs_csv applies filters
+	 */
+	public function test_export_logs_csv_applies_filters() {
+		global $wpdb;
+		$wpdb         = Mockery::mock( 'wpdb' );
+		$wpdb->prefix = 'wp_';
+
+		$mock_logs = array(
+			array(
+				'id'          => 1,
+				'timestamp'   => '2024-01-15 10:00:00',
+				'type'        => 'error',
+				'operation'   => 'order_sync',
+				'status'      => 'error',
+				'message'     => 'Error occurred',
+				'payload'     => '{}',
+				'response'    => null,
+				'duration'    => null,
+				'error_trace' => 'Stack trace',
+				'context'     => null,
+			),
+		);
+
+		Functions\expect( 'wp_parse_args' )
+			->once()
+			->andReturnUsing( function( $args, $defaults ) {
+				return array_merge( $defaults, $args );
+			} );
+
+		Functions\expect( 'absint' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return abs( (int) $value );
+			} );
+
+		Functions\expect( 'esc_sql' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return $value;
+			} );
+
+		// Expect prepare to be called with type filter
+		$wpdb->shouldReceive( 'prepare' )
+			->twice()
+			->andReturnUsing( function( $query, ...$args ) {
+				return vsprintf( str_replace( '%s', "'%s'", $query ), $args );
+			} );
+
+		$wpdb->shouldReceive( 'get_var' )
+			->once()
+			->andReturn( 1 );
+
+		$wpdb->shouldReceive( 'get_results' )
+			->once()
+			->andReturn( $mock_logs );
+
+		$logger = new Logger();
+		$csv    = $logger->export_logs_csv( array( 'type' => 'error' ) );
+
+		// Verify CSV contains only error logs
+		$this->assertStringContainsString( '"error"', $csv );
+		$this->assertStringContainsString( '"order_sync"', $csv );
+	}
+
+	/**
+	 * Test export_logs_csv handles empty results
+	 */
+	public function test_export_logs_csv_handles_empty_results() {
+		global $wpdb;
+		$wpdb         = Mockery::mock( 'wpdb' );
+		$wpdb->prefix = 'wp_';
+
+		Functions\expect( 'wp_parse_args' )
+			->once()
+			->andReturnUsing( function( $args, $defaults ) {
+				return array_merge( $defaults, $args );
+			} );
+
+		Functions\expect( 'absint' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return abs( (int) $value );
+			} );
+
+		Functions\expect( 'esc_sql' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return $value;
+			} );
+
+		$wpdb->shouldReceive( 'get_var' )
+			->once()
+			->andReturn( 0 );
+
+		$wpdb->shouldReceive( 'get_results' )
+			->once()
+			->andReturn( array() );
+
+		$logger = new Logger();
+		$csv    = $logger->export_logs_csv();
+
+		// Should still have headers
+		$this->assertIsString( $csv );
+		$this->assertStringContainsString( '"ID"', $csv );
+		$this->assertStringContainsString( '"Timestamp"', $csv );
+
+		// Should only have header line
+		$lines = explode( "\n", trim( $csv ) );
+		$this->assertCount( 1, $lines );
+	}
+
+	/**
+	 * Test export_logs_csv properly escapes CSV fields
+	 */
+	public function test_export_logs_csv_properly_escapes_csv_fields() {
+		global $wpdb;
+		$wpdb         = Mockery::mock( 'wpdb' );
+		$wpdb->prefix = 'wp_';
+
+		$mock_logs = array(
+			array(
+				'id'          => 1,
+				'timestamp'   => '2024-01-15 10:00:00',
+				'type'        => 'api_request',
+				'operation'   => '/api/v1/orders',
+				'status'      => 'success',
+				'message'     => 'Message with "quotes" and, commas',
+				'payload'     => '{"key":"value with ""quotes"""}',
+				'response'    => '{"message":"Success, all good"}',
+				'duration'    => 1.5,
+				'error_trace' => null,
+				'context'     => null,
+			),
+		);
+
+		Functions\expect( 'wp_parse_args' )
+			->once()
+			->andReturnUsing( function( $args, $defaults ) {
+				return array_merge( $defaults, $args );
+			} );
+
+		Functions\expect( 'absint' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return abs( (int) $value );
+			} );
+
+		Functions\expect( 'esc_sql' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return $value;
+			} );
+
+		$wpdb->shouldReceive( 'get_var' )
+			->once()
+			->andReturn( 1 );
+
+		$wpdb->shouldReceive( 'get_results' )
+			->once()
+			->andReturn( $mock_logs );
+
+		$logger = new Logger();
+		$csv    = $logger->export_logs_csv();
+
+		// Verify proper CSV escaping (quotes should be doubled and fields wrapped in quotes)
+		$this->assertStringContainsString( '""quotes""', $csv );
+		$this->assertStringContainsString( 'commas', $csv );
+
+		// Verify CSV is parseable
+		$lines = explode( "\n", trim( $csv ) );
+		$this->assertCount( 2, $lines ); // Header + 1 data row
+	}
+
+	/**
+	 * Test export_logs_csv handles null values
+	 */
+	public function test_export_logs_csv_handles_null_values() {
+		global $wpdb;
+		$wpdb         = Mockery::mock( 'wpdb' );
+		$wpdb->prefix = 'wp_';
+
+		$mock_logs = array(
+			array(
+				'id'          => 1,
+				'timestamp'   => '2024-01-15 10:00:00',
+				'type'        => 'webhook',
+				'operation'   => 'stock',
+				'status'      => 'success',
+				'message'     => 'Webhook received',
+				'payload'     => '{"sku":"PROD001"}',
+				'response'    => '{"success":true}',
+				'duration'    => null,
+				'error_trace' => null,
+				'context'     => null,
+			),
+		);
+
+		Functions\expect( 'wp_parse_args' )
+			->once()
+			->andReturnUsing( function( $args, $defaults ) {
+				return array_merge( $defaults, $args );
+			} );
+
+		Functions\expect( 'absint' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return abs( (int) $value );
+			} );
+
+		Functions\expect( 'esc_sql' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return $value;
+			} );
+
+		$wpdb->shouldReceive( 'get_var' )
+			->once()
+			->andReturn( 1 );
+
+		$wpdb->shouldReceive( 'get_results' )
+			->once()
+			->andReturn( $mock_logs );
+
+		$logger = new Logger();
+		$csv    = $logger->export_logs_csv();
+
+		// Verify CSV is generated without errors
+		$this->assertIsString( $csv );
+		$this->assertNotEmpty( $csv );
+
+		// Null values should be converted to empty strings in CSV
+		$lines = explode( "\n", trim( $csv ) );
+		$this->assertCount( 2, $lines ); // Header + 1 data row
+
+		// Verify the data row has the correct number of fields (11 fields)
+		$data_line = $lines[1];
+		$fields    = str_getcsv( $data_line );
+		$this->assertCount( 11, $fields );
+	}
+
+	/**
+	 * Test export_logs_csv converts array payloads to JSON strings
+	 */
+	public function test_export_logs_csv_converts_array_payloads_to_json() {
+		global $wpdb;
+		$wpdb         = Mockery::mock( 'wpdb' );
+		$wpdb->prefix = 'wp_';
+
+		$mock_logs = array(
+			array(
+				'id'          => 1,
+				'timestamp'   => '2024-01-15 10:00:00',
+				'type'        => 'api_request',
+				'operation'   => '/api/v1/orders',
+				'status'      => 'success',
+				'message'     => 'API request',
+				'payload'     => array( 'order_id' => 123, 'items' => array( 'sku' => 'PROD001' ) ), // Array instead of JSON string
+				'response'    => array( 'success' => true, 'protheus_id' => '789' ), // Array instead of JSON string
+				'duration'    => 1.5,
+				'error_trace' => null,
+				'context'     => array( 'user_id' => 456 ), // Array instead of JSON string
+			),
+		);
+
+		Functions\expect( 'wp_parse_args' )
+			->once()
+			->andReturnUsing( function( $args, $defaults ) {
+				return array_merge( $defaults, $args );
+			} );
+
+		Functions\expect( 'absint' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return abs( (int) $value );
+			} );
+
+		Functions\expect( 'esc_sql' )
+			->twice()
+			->andReturnUsing( function( $value ) {
+				return $value;
+			} );
+
+		Functions\expect( 'wp_json_encode' )
+			->times( 3 ) // Called for payload, response, and context
+			->andReturnUsing( function( $data ) {
+				return json_encode( $data );
+			} );
+
+		$wpdb->shouldReceive( 'get_var' )
+			->once()
+			->andReturn( 1 );
+
+		$wpdb->shouldReceive( 'get_results' )
+			->once()
+			->andReturn( $mock_logs );
+
+		$logger = new Logger();
+		$csv    = $logger->export_logs_csv();
+
+		// Verify CSV contains JSON-encoded data
+		$this->assertStringContainsString( 'order_id', $csv );
+		$this->assertStringContainsString( 'protheus_id', $csv );
+		$this->assertStringContainsString( 'user_id', $csv );
+	}
 }
 

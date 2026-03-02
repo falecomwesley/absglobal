@@ -1,0 +1,5 @@
+2026-03-01T15:57:15+00:00 INFO Payment gateway enabled: "Pix"
+2026-03-01T15:57:28+00:00 INFO Payment gateway enabled: "Boleto e Cartão"
+2026-03-01T15:57:40+00:00 INFO Payment gateway enabled: "Cartão de Crédito"
+2026-03-01T15:57:59+00:00 INFO Payment gateway enabled: "2 Cartões"
+2026-03-01T15:58:10+00:00 INFO Payment gateway enabled: "Boleto"
