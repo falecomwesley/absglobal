@@ -10,18 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $order_status_payload = array(
-	'order_id'       => 'PTH-2026-000123',
-	'woo_order_id'   => 1234,
-	'status'         => 'approved',
-	'tracking_code'  => 'BR123456789',
-	'invoice_number' => 'NF-998877',
-	'invoice_date'   => '2026-03-02',
+	'woo_order_id' => 1234,
+	'status'       => 'approved',
 );
 
 $stock_payload = array(
 	'sku'      => 'SKU-ABC-001',
 	'quantity' => 48,
-	'warehouse'=> '01',
 );
 
 $spec_order = array(
@@ -111,6 +106,7 @@ $spec_inventory_batch = array(
 	<div class="absloja-api-endpoint">
 		<h3><span class="absloja-method post">POST</span> <code>/webhook/order-status</code></h3>
 		<p><?php esc_html_e( 'Updates WooCommerce order status from client/Protheus side.', 'absloja-protheus-connector' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Required fields: woo_order_id, status.', 'absloja-protheus-connector' ); ?></p>
 		<h4><?php esc_html_e( 'Example JSON body', 'absloja-protheus-connector' ); ?></h4>
 		<pre><?php echo esc_html( wp_json_encode( $order_status_payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) ); ?></pre>
 	</div>
@@ -118,6 +114,7 @@ $spec_inventory_batch = array(
 	<div class="absloja-api-endpoint">
 		<h3><span class="absloja-method post">POST</span> <code>/webhook/stock</code></h3>
 		<p><?php esc_html_e( 'Updates WooCommerce stock by SKU from client/Protheus side.', 'absloja-protheus-connector' ); ?></p>
+		<p class="description"><?php esc_html_e( 'Required fields: sku, quantity.', 'absloja-protheus-connector' ); ?></p>
 		<h4><?php esc_html_e( 'Example JSON body', 'absloja-protheus-connector' ); ?></h4>
 		<pre><?php echo esc_html( wp_json_encode( $stock_payload, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) ); ?></pre>
 	</div>

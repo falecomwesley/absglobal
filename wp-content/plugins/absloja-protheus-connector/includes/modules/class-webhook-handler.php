@@ -322,19 +322,14 @@ class Webhook_Handler {
 	 * Processes incoming order status updates from Protheus.
 	 * Expected payload:
 	 * {
-	 *   "order_id": "123456",           // Protheus order ID
 	 *   "woo_order_id": "789",          // WooCommerce order ID
-	 *   "status": "approved",           // Protheus status
-	 *   "tracking_code": "BR123456789", // Optional tracking code
-	 *   "invoice_number": "000123",     // Optional invoice number
-	 *   "invoice_date": "2024-01-15"    // Optional invoice date
+	 *   "status": "approved"            // Protheus status
 	 * }
 	 *
 	 * @param \WP_REST_Request $request The REST API request object.
 	 * @return \WP_REST_Response REST API response.
 	 */
 	public function handle_order_status_update( \WP_REST_Request $request ): \WP_REST_Response {
-		$start_time = microtime( true );
 		$payload    = $request->get_json_params();
 
 		// Validate required fields
@@ -374,26 +369,7 @@ class Webhook_Handler {
 		// Update order status
 		$order->update_status( $woo_status, sprintf( 'Status updated via Protheus webhook: %s', $payload['status'] ) );
 
-		// Store additional metadata if provided
-		if ( ! empty( $payload['tracking_code'] ) ) {
-			$order->update_meta_data( '_protheus_tracking_code', sanitize_text_field( $payload['tracking_code'] ) );
-		}
-
-		if ( ! empty( $payload['invoice_number'] ) ) {
-			$order->update_meta_data( '_protheus_invoice_number', sanitize_text_field( $payload['invoice_number'] ) );
-		}
-
-		if ( ! empty( $payload['invoice_date'] ) ) {
-			$order->update_meta_data( '_protheus_invoice_date', sanitize_text_field( $payload['invoice_date'] ) );
-		}
-
-		if ( ! empty( $payload['order_id'] ) ) {
-			$order->update_meta_data( '_protheus_order_id', sanitize_text_field( $payload['order_id'] ) );
-		}
-
 		$order->save();
-
-		$duration = microtime( true ) - $start_time;
 
 		$response = new \WP_REST_Response(
 			array(
@@ -415,15 +391,13 @@ class Webhook_Handler {
 	 * Expected payload:
 	 * {
 	 *   "sku": "PROD001",      // Product SKU
-	 *   "quantity": 50,        // Stock quantity
-	 *   "warehouse": "01"      // Optional warehouse code
+	 *   "quantity": 50         // Stock quantity
 	 * }
 	 *
 	 * @param \WP_REST_Request $request The REST API request object.
 	 * @return \WP_REST_Response REST API response.
 	 */
 	public function handle_stock_update( \WP_REST_Request $request ): \WP_REST_Response {
-		$start_time = microtime( true );
 		$payload    = $request->get_json_params();
 
 		// Validate required fields
@@ -491,8 +465,6 @@ class Webhook_Handler {
 		}
 
 		$product->save();
-
-		$duration = microtime( true ) - $start_time;
 
 		$response = new \WP_REST_Response(
 			array(
