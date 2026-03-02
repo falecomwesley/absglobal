@@ -16,6 +16,20 @@ $log_retention   = get_option( 'absloja_protheus_log_retention', 30 );
 $webhook_token   = get_option( 'absloja_protheus_webhook_token', '' );
 $webhook_secret  = get_option( 'absloja_protheus_webhook_secret', '' );
 $image_url_pattern = get_option( 'absloja_protheus_image_url_pattern', '' );
+$endpoint_orders_create  = get_option( 'absloja_protheus_endpoint_orders_create', '' );
+$endpoint_orders_status  = get_option( 'absloja_protheus_endpoint_orders_status', '' );
+$endpoint_orders_cancel  = get_option( 'absloja_protheus_endpoint_orders_cancel', '' );
+$endpoint_orders_refund  = get_option( 'absloja_protheus_endpoint_orders_refund', '' );
+$endpoint_customers      = get_option( 'absloja_protheus_endpoint_customers', '' );
+$endpoint_products       = get_option( 'absloja_protheus_endpoint_products', '' );
+$endpoint_product_by_sku = get_option( 'absloja_protheus_endpoint_product_by_sku', '' );
+$endpoint_stock          = get_option( 'absloja_protheus_endpoint_stock', '' );
+$endpoint_health         = get_option( 'absloja_protheus_endpoint_health', '' );
+$customer_document_param = get_option( 'absloja_protheus_customer_document_param', 'cgc' );
+$company_param           = get_option( 'absloja_protheus_company_param', '' );
+$company_value           = get_option( 'absloja_protheus_company_value', '' );
+$branch_param            = get_option( 'absloja_protheus_branch_param', '' );
+$branch_value            = get_option( 'absloja_protheus_branch_value', '' );
 ?>
 
 <form method="post" action="options.php">
@@ -183,6 +197,59 @@ $image_url_pattern = get_option( 'absloja_protheus_image_url_pattern', '' );
 				<p class="description">
 					<?php esc_html_e( 'URL pattern for product images. Use {sku} as placeholder for product SKU.', 'absloja-protheus-connector' ); ?>
 				</p>
+			</td>
+		</tr>
+	</table>
+
+	<h3><?php esc_html_e( 'TOTVS Contract Overrides', 'absloja-protheus-connector' ); ?></h3>
+
+	<table class="form-table">
+		<tr>
+			<th scope="row"><label for="absloja_protheus_endpoint_orders_create"><?php esc_html_e( 'Order Create Endpoint', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_endpoint_orders_create" name="absloja_protheus_endpoint_orders_create" value="<?php echo esc_attr( $endpoint_orders_create ); ?>" class="regular-text" placeholder="api/ecommerce/v1/retailSalesOrders"></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="absloja_protheus_endpoint_orders_status"><?php esc_html_e( 'Order Status Endpoint', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_endpoint_orders_status" name="absloja_protheus_endpoint_orders_status" value="<?php echo esc_attr( $endpoint_orders_status ); ?>" class="regular-text" placeholder="api/ecommerce/v1/orderChangeStatus"></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="absloja_protheus_endpoint_orders_cancel"><?php esc_html_e( 'Order Cancel Endpoint', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_endpoint_orders_cancel" name="absloja_protheus_endpoint_orders_cancel" value="<?php echo esc_attr( $endpoint_orders_cancel ); ?>" class="regular-text" placeholder="api/ecommerce/v1/orderChangeStatus"></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="absloja_protheus_endpoint_orders_refund"><?php esc_html_e( 'Order Refund Endpoint', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_endpoint_orders_refund" name="absloja_protheus_endpoint_orders_refund" value="<?php echo esc_attr( $endpoint_orders_refund ); ?>" class="regular-text" placeholder="api/ecommerce/v1/orderChangeStatus"></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="absloja_protheus_endpoint_customers"><?php esc_html_e( 'Customers Endpoint', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_endpoint_customers" name="absloja_protheus_endpoint_customers" value="<?php echo esc_attr( $endpoint_customers ); ?>" class="regular-text" placeholder="api/v1/customers"></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="absloja_protheus_endpoint_products"><?php esc_html_e( 'Products Endpoint', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_endpoint_products" name="absloja_protheus_endpoint_products" value="<?php echo esc_attr( $endpoint_products ); ?>" class="regular-text" placeholder="api/ecommerce/v1/retailItem"></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="absloja_protheus_endpoint_product_by_sku"><?php esc_html_e( 'Product By SKU Endpoint', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_endpoint_product_by_sku" name="absloja_protheus_endpoint_product_by_sku" value="<?php echo esc_attr( $endpoint_product_by_sku ); ?>" class="regular-text" placeholder="api/ecommerce/v1/retailItem/{sku}"></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="absloja_protheus_endpoint_stock"><?php esc_html_e( 'Stock Endpoint', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_endpoint_stock" name="absloja_protheus_endpoint_stock" value="<?php echo esc_attr( $endpoint_stock ); ?>" class="regular-text" placeholder="api/ecommerce/v1/stock-product"></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="absloja_protheus_endpoint_health"><?php esc_html_e( 'Health Endpoint', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_endpoint_health" name="absloja_protheus_endpoint_health" value="<?php echo esc_attr( $endpoint_health ); ?>" class="regular-text" placeholder="api/v1/health"></td>
+		</tr>
+		<tr>
+			<th scope="row"><label for="absloja_protheus_customer_document_param"><?php esc_html_e( 'Customer Document Param', 'absloja-protheus-connector' ); ?></label></th>
+			<td><input type="text" id="absloja_protheus_customer_document_param" name="absloja_protheus_customer_document_param" value="<?php echo esc_attr( $customer_document_param ); ?>" class="regular-text" placeholder="cgc"></td>
+		</tr>
+		<tr>
+			<th scope="row"><?php esc_html_e( 'Context Params', 'absloja-protheus-connector' ); ?></th>
+			<td>
+				<p><input type="text" name="absloja_protheus_company_param" value="<?php echo esc_attr( $company_param ); ?>" class="regular-text" placeholder="companyId"> <input type="text" name="absloja_protheus_company_value" value="<?php echo esc_attr( $company_value ); ?>" class="regular-text" placeholder="01"></p>
+				<p><input type="text" name="absloja_protheus_branch_param" value="<?php echo esc_attr( $branch_param ); ?>" class="regular-text" placeholder="branchId"> <input type="text" name="absloja_protheus_branch_value" value="<?php echo esc_attr( $branch_value ); ?>" class="regular-text" placeholder="01"></p>
+				<p class="description"><?php esc_html_e( 'Optional query parameters appended to list/search endpoints.', 'absloja-protheus-connector' ); ?></p>
 			</td>
 		</tr>
 	</table>

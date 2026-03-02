@@ -63,6 +63,13 @@ class Order_Sync {
 	private $retry_manager;
 
 	/**
+	 * API contract resolver.
+	 *
+	 * @var Api_Contract_Resolver
+	 */
+	private $contract;
+
+	/**
 	 * Constructor
 	 *
 	 * @param Protheus_Client $client         Protheus API client instance.
@@ -83,6 +90,7 @@ class Order_Sync {
 		$this->mapper         = $mapper;
 		$this->logger         = $logger;
 		$this->retry_manager  = $retry_manager;
+		$this->contract       = new Api_Contract_Resolver();
 	}
 
 	/**
@@ -174,12 +182,13 @@ class Order_Sync {
 
 		// Send order to Protheus
 		$start_time = microtime( true );
-		$response = $this->client->post( 'api/v1/orders', $payload );
+		$endpoint = $this->contract->endpoint( 'orders_create' );
+		$response = $this->client->post( $endpoint, $payload );
 		$duration = microtime( true ) - $start_time;
 
 		// Log API request
 		$this->logger->log_api_request(
-			'POST /api/v1/orders',
+			'POST /' . $endpoint,
 			$payload,
 			$response,
 			$duration
@@ -327,12 +336,13 @@ class Order_Sync {
 
 		// Send status update to Protheus
 		$start_time = microtime( true );
-		$response = $this->client->post( 'api/v1/orders/status', $payload );
+		$endpoint = $this->contract->endpoint( 'orders_status' );
+		$response = $this->client->post( $endpoint, $payload );
 		$duration = microtime( true ) - $start_time;
 
 		// Log API request
 		$this->logger->log_api_request(
-			'POST /api/v1/orders/status',
+			'POST /' . $endpoint,
 			$payload,
 			$response,
 			$duration
@@ -418,12 +428,13 @@ class Order_Sync {
 
 		// Send cancellation request to Protheus
 		$start_time = microtime( true );
-		$response = $this->client->post( 'api/v1/orders/cancel', $payload );
+		$endpoint = $this->contract->endpoint( 'orders_cancel' );
+		$response = $this->client->post( $endpoint, $payload );
 		$duration = microtime( true ) - $start_time;
 
 		// Log API request
 		$this->logger->log_api_request(
-			'POST /api/v1/orders/cancel',
+			'POST /' . $endpoint,
 			$payload,
 			$response,
 			$duration
@@ -522,12 +533,13 @@ class Order_Sync {
 
 		// Send refund notification to Protheus
 		$start_time = microtime( true );
-		$response = $this->client->post( 'api/v1/orders/refund', $payload );
+		$endpoint = $this->contract->endpoint( 'orders_refund' );
+		$response = $this->client->post( $endpoint, $payload );
 		$duration = microtime( true ) - $start_time;
 
 		// Log API request
 		$this->logger->log_api_request(
-			'POST /api/v1/orders/refund',
+			'POST /' . $endpoint,
 			$payload,
 			$response,
 			$duration

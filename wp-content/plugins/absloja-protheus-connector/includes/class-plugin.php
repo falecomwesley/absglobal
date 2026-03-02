@@ -349,8 +349,8 @@ class Plugin {
 		$logger = new Modules\Logger();
 		$client = $this->create_protheus_client();
 		$mapper = new Modules\Mapping_Engine();
-		$customer_sync = new Modules\Customer_Sync( $client, $mapper, $logger );
 		$retry_manager = new Modules\Retry_Manager( $logger );
+		$customer_sync = new Modules\Customer_Sync( $client, $mapper, $logger, $retry_manager );
 
 		// Instantiate Order_Sync
 		$order_sync = new Modules\Order_Sync(
@@ -385,8 +385,8 @@ class Plugin {
 		$logger = new Modules\Logger();
 		$client = $this->create_protheus_client();
 		$mapper = new Modules\Mapping_Engine();
-		$customer_sync = new Modules\Customer_Sync( $client, $mapper, $logger );
 		$retry_manager = new Modules\Retry_Manager( $logger );
+		$customer_sync = new Modules\Customer_Sync( $client, $mapper, $logger, $retry_manager );
 
 		// Instantiate Order_Sync
 		$order_sync = new Modules\Order_Sync(
@@ -421,8 +421,8 @@ class Plugin {
 		$logger = new Modules\Logger();
 		$client = $this->create_protheus_client();
 		$mapper = new Modules\Mapping_Engine();
-		$customer_sync = new Modules\Customer_Sync( $client, $mapper, $logger );
 		$retry_manager = new Modules\Retry_Manager( $logger );
+		$customer_sync = new Modules\Customer_Sync( $client, $mapper, $logger, $retry_manager );
 
 		// Instantiate Order_Sync
 		$order_sync = new Modules\Order_Sync(
@@ -463,8 +463,8 @@ class Plugin {
 			$logger = new Modules\Logger();
 			$client = $this->create_protheus_client();
 			$mapper = new Modules\Mapping_Engine();
-			$customer_sync = new Modules\Customer_Sync( $client, $mapper, $logger );
 			$retry_manager = new Modules\Retry_Manager( $logger );
+			$customer_sync = new Modules\Customer_Sync( $client, $mapper, $logger, $retry_manager );
 
 			// Instantiate Order_Sync
 			$order_sync = new Modules\Order_Sync(

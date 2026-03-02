@@ -55,6 +55,13 @@ class Customer_Sync {
 	private $retry_manager;
 
 	/**
+	 * API contract resolver.
+	 *
+	 * @var Api_Contract_Resolver
+	 */
+	private $contract;
+
+	/**
 	 * Constructor
 	 *
 	 * @param Protheus_Client $client        Protheus API client instance.
@@ -67,6 +74,7 @@ class Customer_Sync {
 		$this->mapper        = $mapper;
 		$this->logger        = $logger;
 		$this->retry_manager = $retry_manager;
+		$this->contract      = new Api_Contract_Resolver();
 	}
 
 	/**
@@ -176,17 +184,19 @@ class Customer_Sync {
 		$start_time = microtime( true );
 
 		// Query Protheus API for customer by CGC (CPF/CNPJ)
-		$response = $this->client->get(
-			'api/v1/customers',
-			array( 'cgc' => $cpf_cnpj )
-		);
+		$query_param = $this->contract->customer_document_param();
+		$query       = array( $query_param => $cpf_cnpj );
+		$query       = $this->contract->add_context_query_params( $query );
+		$endpoint    = $this->contract->endpoint( 'customers' );
+
+		$response = $this->client->get( $endpoint, $query );
 
 		$duration = microtime( true ) - $start_time;
 
 		// Log API request
 		$this->logger->log_api_request(
-			'GET /api/v1/customers',
-			array( 'cgc' => $cpf_cnpj ),
+			'GET /' . $endpoint,
+			$query,
 			$response,
 			$duration
 		);
@@ -291,13 +301,14 @@ class Customer_Sync {
 		$start_time = microtime( true );
 
 		// Send POST request to create customer
-		$response = $this->client->post( 'api/v1/customers', $payload );
+		$endpoint = $this->contract->endpoint( 'customers' );
+		$response = $this->client->post( $endpoint, $payload );
 
 		$duration = microtime( true ) - $start_time;
 
 		// Log API request
 		$this->logger->log_api_request(
-			'POST /api/v1/customers',
+			'POST /' . $endpoint,
 			$payload,
 			$response,
 			$duration

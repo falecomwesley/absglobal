@@ -73,6 +73,7 @@ class Settings {
 		register_setting( 'absloja_protheus_connection', 'absloja_protheus_client_id', 'sanitize_text_field' );
 		register_setting( 'absloja_protheus_connection', 'absloja_protheus_client_secret', array( $this, 'sanitize_password' ) );
 		register_setting( 'absloja_protheus_connection', 'absloja_protheus_token_endpoint', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_connection', 'absloja_protheus_contract_profile', array( $this, 'sanitize_contract_profile' ) );
 
 		// Mapping settings.
 		register_setting( 'absloja_protheus_mappings', 'absloja_protheus_payment_mapping', array( $this, 'sanitize_array' ) );
@@ -92,6 +93,20 @@ class Settings {
 		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_webhook_token', 'sanitize_text_field' );
 		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_webhook_secret', 'sanitize_text_field' );
 		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_image_url_pattern', 'esc_url_raw' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_endpoint_orders_create', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_endpoint_orders_status', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_endpoint_orders_cancel', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_endpoint_orders_refund', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_endpoint_customers', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_endpoint_products', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_endpoint_product_by_sku', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_endpoint_stock', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_endpoint_health', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_customer_document_param', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_company_param', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_company_value', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_branch_param', 'sanitize_text_field' );
+		register_setting( 'absloja_protheus_advanced', 'absloja_protheus_branch_value', 'sanitize_text_field' );
 	}
 
 	/**
@@ -103,6 +118,17 @@ class Settings {
 	public function sanitize_auth_type( $value ) {
 		$valid = array( 'basic', 'oauth2' );
 		return in_array( $value, $valid, true ) ? $value : 'basic';
+	}
+
+	/**
+	 * Sanitize contract profile.
+	 *
+	 * @param string $value Input value.
+	 * @return string
+	 */
+	public function sanitize_contract_profile( $value ) {
+		$valid = array( 'totvs_ecommerce_v1', 'custom' );
+		return in_array( $value, $valid, true ) ? $value : 'totvs_ecommerce_v1';
 	}
 
 	/**

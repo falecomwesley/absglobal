@@ -16,6 +16,7 @@ $password        = get_option( 'absloja_protheus_password', '' );
 $client_id       = get_option( 'absloja_protheus_client_id', '' );
 $client_secret   = get_option( 'absloja_protheus_client_secret', '' );
 $token_endpoint  = get_option( 'absloja_protheus_token_endpoint', '/oauth2/token' );
+$contract_profile = get_option( 'absloja_protheus_contract_profile', 'totvs_ecommerce_v1' );
 ?>
 
 <form method="post" action="options.php">
@@ -53,6 +54,21 @@ $token_endpoint  = get_option( 'absloja_protheus_token_endpoint', '/oauth2/token
 				</select>
 				<p class="description">
 					<?php esc_html_e( 'Select the authentication method used by your Protheus API', 'absloja-protheus-connector' ); ?>
+				</p>
+			</td>
+		</tr>
+
+		<tr>
+			<th scope="row">
+				<label for="absloja_protheus_contract_profile"><?php esc_html_e( 'API Contract Profile', 'absloja-protheus-connector' ); ?></label>
+			</th>
+			<td>
+				<select id="absloja_protheus_contract_profile" name="absloja_protheus_contract_profile">
+					<option value="totvs_ecommerce_v1" <?php selected( $contract_profile, 'totvs_ecommerce_v1' ); ?>><?php esc_html_e( 'TOTVS E-commerce v1 (Recommended)', 'absloja-protheus-connector' ); ?></option>
+					<option value="custom" <?php selected( $contract_profile, 'custom' ); ?>><?php esc_html_e( 'Custom (use endpoint overrides)', 'absloja-protheus-connector' ); ?></option>
+				</select>
+				<p class="description">
+					<?php esc_html_e( 'Select which endpoint contract the plugin should follow.', 'absloja-protheus-connector' ); ?>
 				</p>
 			</td>
 		</tr>

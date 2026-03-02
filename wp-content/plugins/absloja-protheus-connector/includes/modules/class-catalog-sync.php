@@ -49,6 +49,13 @@ class Catalog_Sync {
 	private $logger;
 
 	/**
+	 * API contract resolver.
+	 *
+	 * @var Api_Contract_Resolver
+	 */
+	private $contract;
+
+	/**
 	 * Constructor
 	 *
 	 * @param Protheus_Client $client Protheus API client.
@@ -56,9 +63,10 @@ class Catalog_Sync {
 	 * @param Logger          $logger Logger for operation tracking.
 	 */
 	public function __construct( Protheus_Client $client, Mapping_Engine $mapper, Logger $logger ) {
-		$this->client = $client;
-		$this->mapper = $mapper;
-		$this->logger = $logger;
+		$this->client   = $client;
+		$this->mapper   = $mapper;
+		$this->logger   = $logger;
+		$this->contract = new Api_Contract_Resolver();
 
 		// Register hooks for price editing prevention
 		$this->register_price_protection_hooks();
@@ -283,13 +291,9 @@ class Catalog_Sync {
 
 		while ( $has_more ) {
 			// Fetch products from Protheus
-			$response = $this->client->get(
-				'api/v1/products',
-				array(
-					'page'  => $page,
-					'limit' => $batch_size,
-				)
-			);
+			$endpoint = $this->contract->endpoint( 'products' );
+			$query    = $this->contract->pagination_params( $page, $batch_size );
+			$response = $this->client->get( $endpoint, $query );
 
 			if ( ! $response['success'] ) {
 				$error_msg = sprintf(
@@ -310,8 +314,8 @@ class Catalog_Sync {
 				break;
 			}
 
-			$products = $response['data']['products'] ?? array();
-			$has_more = ! empty( $products ) && count( $products ) === $batch_size;
+			$products = $this->extract_products_collection( $response['data'] ?? array() );
+			$has_more = ! empty( $products ) && $this->contract->has_next_page( $response['data'] ?? array(), count( $products ), $batch_size );
 
 			// Process each product
 			foreach ( $products as $product_data ) {
@@ -384,7 +388,9 @@ class Catalog_Sync {
 		);
 
 		// Fetch stock data from Protheus
-		$response = $this->client->get( 'api/v1/stock' );
+		$endpoint = $this->contract->endpoint( 'stock' );
+		$query    = $this->contract->add_context_query_params( array() );
+		$response = $this->client->get( $endpoint, $query );
 
 		if ( ! $response['success'] ) {
 			$error_msg = sprintf(
@@ -401,12 +407,12 @@ class Catalog_Sync {
 			return $results;
 		}
 
-		$stock_items = $response['data']['stock'] ?? array();
+		$stock_items = $this->extract_stock_collection( $response['data'] ?? array() );
 
 		// Process each stock item
 		foreach ( $stock_items as $stock_data ) {
-			$sku      = $stock_data['B2_COD'] ?? '';
-			$quantity = isset( $stock_data['B2_QATU'] ) ? (int) $stock_data['B2_QATU'] : 0;
+			$sku      = $this->extract_sku( $stock_data );
+			$quantity = $this->extract_quantity( $stock_data );
 
 			if ( empty( $sku ) ) {
 				$results['errors']++;
@@ -466,9 +472,11 @@ class Catalog_Sync {
 		}
 
 		// Fetch product from Protheus
-		$response = $this->client->get(
-			'api/v1/products/' . urlencode( $sku )
+		$endpoint = $this->contract->endpoint(
+			'product_by_sku',
+			array( 'sku' => urlencode( $sku ) )
 		);
+		$response = $this->client->get( $endpoint );
 
 		if ( ! $response['success'] ) {
 			$this->logger->log_sync_operation(
@@ -548,12 +556,12 @@ class Catalog_Sync {
 	 */
 	private function process_single_product( array $product_data ): array {
 		try {
-			$sku = $product_data['B1_COD'] ?? '';
+			$sku = $this->extract_sku( $product_data );
 
 			if ( empty( $sku ) ) {
 				return array(
 					'success' => false,
-					'error'   => 'Product data missing B1_COD (SKU)',
+					'error'   => 'Product data missing SKU',
 				);
 			}
 
@@ -614,6 +622,7 @@ class Catalog_Sync {
 	 */
 	private function map_product_data( array $protheus_data ): array {
 		$mapping = $this->mapper->get_product_mapping();
+		$sku     = $this->extract_sku( $protheus_data );
 
 		// Determine product status based on B1_MSBLQL (blocked status)
 		$blocked = isset( $protheus_data['B1_MSBLQL'] ) && $protheus_data['B1_MSBLQL'] === '1';
@@ -644,7 +653,7 @@ class Catalog_Sync {
 			'_protheus_synced'     => true,
 			'_protheus_sync_date'  => current_time( 'mysql' ),
 			'_protheus_b1_grupo'   => $protheus_data['B1_GRUPO'] ?? '',
-			'_protheus_b1_cod'     => $protheus_data['B1_COD'] ?? '',
+			'_protheus_b1_cod'     => $sku,
 			'_protheus_price_locked' => true,
 		);
 
@@ -656,14 +665,118 @@ class Catalog_Sync {
 		} else {
 			// Check if image URL pattern is configured
 			$image_url_pattern = get_option( 'absloja_protheus_image_url_pattern', '' );
-			if ( ! empty( $image_url_pattern ) && ! empty( $protheus_data['B1_COD'] ) ) {
+			if ( ! empty( $image_url_pattern ) && ! empty( $sku ) ) {
 				// Generate image URL from pattern
-				$wc_data['image_url'] = str_replace( '{sku}', $protheus_data['B1_COD'], $image_url_pattern );
+				$wc_data['image_url'] = str_replace( '{sku}', $sku, $image_url_pattern );
 			}
 			// If no pattern and no explicit URL, image_url is not set, preserving existing images
 		}
 
 		return $wc_data;
+	}
+
+	/**
+	 * Extract product collection from response data.
+	 *
+	 * @param mixed $data Parsed API response data.
+	 * @return array<int,array<string,mixed>>
+	 */
+	private function extract_products_collection( $data ): array {
+		if ( ! is_array( $data ) ) {
+			return array();
+		}
+
+		if ( isset( $data['products'] ) && is_array( $data['products'] ) ) {
+			return $data['products'];
+		}
+
+		if ( isset( $data['items'] ) && is_array( $data['items'] ) ) {
+			return $data['items'];
+		}
+
+		return $this->is_list_of_arrays( $data ) ? $data : array();
+	}
+
+	/**
+	 * Extract stock collection from response data.
+	 *
+	 * @param mixed $data Parsed API response data.
+	 * @return array<int,array<string,mixed>>
+	 */
+	private function extract_stock_collection( $data ): array {
+		if ( ! is_array( $data ) ) {
+			return array();
+		}
+
+		if ( isset( $data['stock'] ) && is_array( $data['stock'] ) ) {
+			return $data['stock'];
+		}
+
+		if ( isset( $data['items'] ) && is_array( $data['items'] ) ) {
+			return $data['items'];
+		}
+
+		return $this->is_list_of_arrays( $data ) ? $data : array();
+	}
+
+	/**
+	 * Check whether a value is a list of arrays.
+	 *
+	 * @param array<mixed> $value Input array.
+	 * @return bool
+	 */
+	private function is_list_of_arrays( array $value ): bool {
+		if ( function_exists( 'array_is_list' ) ) {
+			if ( ! array_is_list( $value ) ) {
+				return false;
+			}
+		} elseif ( array_keys( $value ) !== range( 0, count( $value ) - 1 ) ) {
+			return false;
+		}
+
+		foreach ( $value as $item ) {
+			if ( ! is_array( $item ) ) {
+				return false;
+			}
+		}
+
+		return ! empty( $value );
+	}
+
+	/**
+	 * Extract SKU from product/stock payloads with multiple schema variants.
+	 *
+	 * @param array<string,mixed> $row Input row.
+	 * @return string
+	 */
+	private function extract_sku( array $row ): string {
+		$candidates = array( 'B1_COD', 'B2_COD', 'sku', 'productCode', 'code', 'product_code' );
+
+		foreach ( $candidates as $key ) {
+			if ( isset( $row[ $key ] ) && '' !== (string) $row[ $key ] ) {
+				return (string) $row[ $key ];
+			}
+		}
+
+		return '';
+	}
+
+	/**
+	 * Extract quantity from stock payloads with multiple schema variants.
+	 *
+	 * @param array<string,mixed> $row Input row.
+	 * @return int
+	 */
+	private function extract_quantity( array $row ): int {
+		$candidates = array( 'B2_QATU', 'quantity', 'stockQuantity', 'availableStock', 'available', 'saldo' );
+
+		foreach ( $candidates as $key ) {
+			if ( isset( $row[ $key ] ) && '' !== (string) $row[ $key ] ) {
+				return (int) $row[ $key ];
+			}
+		}
+
+		return 0;
 	}
 
 	/**

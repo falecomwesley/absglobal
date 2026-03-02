@@ -318,6 +318,12 @@ class Webhook_Handler {
 		if ( ! empty( $webhook_secret ) && ! empty( $provided_signature ) ) {
 			$body              = $request->get_body();
 			$calculated_signature = hash_hmac( 'sha256', $body, $webhook_secret );
+			$provided_signature   = trim( (string) $provided_signature );
+
+			// Accept common formats: "<hash>" or "sha256=<hash>".
+			if ( strpos( $provided_signature, 'sha256=' ) === 0 ) {
+				$provided_signature = substr( $provided_signature, 7 );
+			}
 
 			if ( hash_equals( $calculated_signature, $provided_signature ) ) {
 				return true;

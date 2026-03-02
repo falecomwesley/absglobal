@@ -73,6 +73,7 @@ class Activator {
 		$defaults = array(
 			'absloja_protheus_auth_type'              => 'basic',
 			'absloja_protheus_api_url'                => '',
+			'absloja_protheus_contract_profile'       => 'totvs_ecommerce_v1',
 			'absloja_protheus_catalog_sync_frequency' => '1hour',
 			'absloja_protheus_stock_sync_frequency'   => '15min',
 			'absloja_protheus_batch_size'             => 50,

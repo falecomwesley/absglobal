@@ -32,6 +32,13 @@ class Auth_Manager {
 	private $config;
 
 	/**
+	 * API contract resolver.
+	 *
+	 * @var Api_Contract_Resolver
+	 */
+	private $contract;
+
+	/**
 	 * WordPress options prefix
 	 *
 	 * @var string
@@ -51,7 +58,8 @@ class Auth_Manager {
 	 *                      - token_endpoint: Token endpoint for OAuth2
 	 */
 	public function __construct( array $config ) {
-		$this->config = $config;
+		$this->config   = $config;
+		$this->contract = new Api_Contract_Resolver();
 	}
 
 	/**
@@ -158,8 +166,8 @@ class Auth_Manager {
 			return false;
 		}
 
-		// Test endpoint - typically a health check or simple GET endpoint
-		$test_url = trailingslashit( $api_url ) . 'api/v1/health';
+		// Test endpoint based on selected contract profile.
+		$test_url = trailingslashit( $api_url ) . $this->contract->endpoint( 'health' );
 
 		$response = wp_remote_get(
 			$test_url,
