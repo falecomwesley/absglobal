@@ -1,54 +1,67 @@
-# Guia de Implementação Protheus TOTVS (Atualizado)
+# Guia Único - Integração Protheus TOTVS (WooCommerce)
 
 Data: 2026-03-02
-Projeto: ABS Loja (WooCommerce + Protheus)
+Escopo: Operação do plugin ABS Loja Protheus Connector em produção
 
-## Objetivo
-Este guia descreve a implementação final do plugin **focado em TOTVS E-commerce API**.
+## 1. Objetivo
+Garantir sincronização estável entre WooCommerce e Protheus usando o contrato TOTVS E-commerce.
 
-## Contrato adotado no plugin
+## 2. Contrato padrão implementado no plugin
 - Pedidos: `api/ecommerce/v1/retailSalesOrders`
-- Mudança de status/cancelamento/reembolso: `api/ecommerce/v1/orderChangeStatus`
+- Alteração de status/cancelamento/reembolso: `api/ecommerce/v1/orderChangeStatus`
 - Produtos: `api/ecommerce/v1/retailItem`
 - Produto por SKU: `api/ecommerce/v1/retailItem/{sku}`
 - Estoque: `api/ecommerce/v1/stock-product`
 - Healthcheck (configurável): `api/v1/health`
 
-## O que está dinâmico (admin do plugin)
-Em `WooCommerce > Protheus Connector`:
-- Perfil de contrato: `totvs_ecommerce_v1` ou `custom`
-- Override de endpoints (se sua instância Protheus tiver rotas diferentes)
-- Parâmetro de documento cliente (ex.: `cgc`, `cpfCnpj`)
-- Parâmetros de contexto (empresa/filial) para query string
+## 3. Configuração no WordPress
+Menu: `WooCommerce > Protheus Connector`
 
-## Formato esperado pelo plugin
+### Connection
+1. Preencher `API URL` da sua instância Protheus
+2. Definir autenticação:
+- `Basic` (usuário/senha), ou
+- `OAuth2` (client_id/client_secret/token_endpoint)
+3. Manter `API Contract Profile = totvs_ecommerce_v1` (recomendado)
+
+### Advanced
+1. Usar override de endpoint apenas se sua instância tiver rotas diferentes
+2. Ajustar parâmetro de documento de cliente quando necessário (ex.: `cgc`)
+3. Configurar contexto de query se sua API exigir:
+- `company_param` + `company_value`
+- `branch_param` + `branch_value`
+
+## 4. Comportamento de sincronização
 ### Catálogo
-- Aceita coleções em `items` ou `products`
-- Paginação com `page` + `pageSize`
-- Reconhece `hasNext` quando disponível
+- Paginação: `page` + `pageSize`
+- Coleções aceitas: `items` ou `products`
+- Paginação avançada: lê `hasNext` quando existir
 
 ### Estoque
-- Aceita coleções em `items` ou `stock`
-- SKU: `B2_COD`, `sku`, `productCode`, `code`
-- Quantidade: `B2_QATU`, `quantity`, `stockQuantity`, `availableStock`
+- Coleções aceitas: `items` ou `stock`
+- SKU aceito em: `B2_COD`, `sku`, `productCode`, `code`
+- Quantidade aceita em: `B2_QATU`, `quantity`, `stockQuantity`, `availableStock`
 
-## Webhooks WordPress (entrada)
+## 5. Webhooks de entrada (WordPress)
 - `POST /wp-json/absloja-protheus/v1/webhook/order-status`
 - `POST /wp-json/absloja-protheus/v1/webhook/stock`
 
 Autenticação:
-- `X-Protheus-Token` ou
-- `X-Protheus-Signature` (HMAC SHA256)
-- Formato aceito para assinatura: `sha256=<hash>` ou `<hash>`
+- `X-Protheus-Token`, ou
+- `X-Protheus-Signature` com HMAC SHA256
+- Assinatura aceita em dois formatos: `sha256=<hash>` ou `<hash>`
 
-## Passos para produção
-1. Configurar `API URL` do Protheus
-2. Configurar autenticação (Basic ou OAuth2)
-3. Confirmar endpoints (usar defaults ou overrides)
-4. Configurar company/branch params se exigidos pela sua API
-5. Testar conexão
-6. Rodar sync de catálogo e estoque
-7. Testar pedido real ponta a ponta
+## 6. Checklist de go-live
+1. Salvar `API URL` real
+2. Salvar credenciais válidas
+3. Testar conexão no painel
+4. Executar sync de catálogo
+5. Executar sync de estoque
+6. Criar pedido real de teste
+7. Confirmar logs sem erro
 
-## Observação importante
-Sem `API URL` e credenciais reais do Protheus, o plugin não consegue executar sincronização real.
+## 7. Critérios de pronto
+A integração só é considerada 100% funcional quando houver:
+- conexão autenticada com API Protheus,
+- sincronização real de produto e estoque,
+- criação de pedido e retorno de status validados em produção.

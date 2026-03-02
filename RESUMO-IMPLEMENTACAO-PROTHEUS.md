@@ -1,23 +1,28 @@
-# Resumo de Implementação Protheus
+# Resumo Único - Status da Integração Protheus
 
 Data: 2026-03-02
 
-## O que foi feito
+## Status atual
 - Plugin alinhado ao contrato TOTVS E-commerce
-- Endpoints principais definidos e configuráveis
-- Sync de catálogo/estoque tolerante a variações de payload
-- Webhooks reforçados para assinatura HMAC
-- Ajustes deployados em produção
+- Deploy em produção concluído
+- Documentação consolidada
 
-## O que falta para fechar 100%
-- Configurar URL real da API Protheus no ambiente de produção
-- Configurar credenciais de integração
-- Executar teste funcional de ponta a ponta (pedido, produto, estoque)
+## Implementado
+- Endpoints padrão TOTVS para pedido/status/produto/estoque
+- Resolvedor de contrato com overrides no admin
+- Paginação e parser de payloads flexíveis (`items/products/stock`, `hasNext`)
+- Webhook com autenticação por token e HMAC (`sha256=<hash>` suportado)
 
-## Onde configurar
-- WooCommerce > Protheus Connector > Connection
-- WooCommerce > Protheus Connector > Advanced
+## O que falta para validação final em produção
+- Configurar `absloja_protheus_api_url`
+- Configurar credenciais reais (Basic ou OAuth2)
+- Rodar teste ponta a ponta (pedido + produto + estoque)
 
-## Resultado atual
-- Código pronto e em produção
-- Integração aguardando apenas credenciais/endpoint reais
+## APIs relevantes ao plugin
+- `RetailSalesOrders`
+- `RetailItem`
+- `ECommerceStockProduct` / `stock-product`
+- `OrderChangeStatus`
+
+## Fora do escopo principal da loja
+APIs de domínios MRP, contábil, compras, relatórios e módulos de sistema não são núcleo da integração WooCommerce.
