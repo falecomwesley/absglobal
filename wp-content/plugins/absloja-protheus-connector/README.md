@@ -41,9 +41,23 @@ O ABS Loja Protheus Connector é um plugin WordPress que integra automaticamente
 ## Configuração Rápida
 
 1. **Conexão**: Configure URL da API e credenciais
+2. **Contrato TOTVS**: Use `TOTVS E-commerce v1` (padrão recomendado)
+3. **Overrides (opcional)**: Ajuste endpoints/params no tab **Advanced** apenas se sua instância tiver rotas diferentes
 2. **Mapeamentos**: Configure mapeamentos de campos
 3. **Agendamento**: Defina frequência de sincronização
 4. **Teste**: Use o botão "Testar Conexão"
+
+## Contrato de API Padrão
+
+O plugin está alinhado ao contrato TOTVS E-commerce com estes endpoints padrão:
+
+- `api/ecommerce/v1/retailSalesOrders`
+- `api/ecommerce/v1/orderChangeStatus`
+- `api/ecommerce/v1/retailItem`
+- `api/ecommerce/v1/retailItem/{sku}`
+- `api/ecommerce/v1/stock-product`
+
+Os endpoints podem ser sobrescritos no admin quando necessário.
 
 ## Documentação
 
