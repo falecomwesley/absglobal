@@ -40,6 +40,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			case 'advanced':
 				$this->render_advanced_tab();
 				break;
+			case 'api-docs':
+				$this->render_api_docs_tab();
+				break;
 			default:
 				$this->render_connection_tab();
 		}

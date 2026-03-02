@@ -217,6 +217,7 @@ class Settings {
 			'schedule'   => __( 'Sync Schedule', 'absloja-protheus-connector' ),
 			'logs'       => __( 'Logs', 'absloja-protheus-connector' ),
 			'advanced'   => __( 'Advanced', 'absloja-protheus-connector' ),
+			'api-docs'   => __( 'API Docs', 'absloja-protheus-connector' ),
 		);
 
 		include plugin_dir_path( __FILE__ ) . 'views/settings-page.php';
@@ -283,5 +284,18 @@ class Settings {
 	public function render_advanced_tab() {
 		$pending_retries = $this->retry_manager->get_pending_retries();
 		include plugin_dir_path( __FILE__ ) . 'views/tab-advanced.php';
+	}
+
+	/**
+	 * Render API documentation tab
+	 */
+	public function render_api_docs_tab() {
+		$site_url       = rtrim( get_site_url(), '/' );
+		$rest_base      = $site_url . '/wp-json/absloja-protheus/v1';
+		$webhook_token  = get_option( 'absloja_protheus_webhook_token', '' );
+		$webhook_secret = get_option( 'absloja_protheus_webhook_secret', '' );
+		$current_date   = gmdate( 'Y-m-d\TH:i:s\Z' );
+
+		include plugin_dir_path( __FILE__ ) . 'views/tab-api-docs.php';
 	}
 }
