@@ -14,12 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class ABS_Protheus_Passive_API {
 	private const OPTION_KEY = 'abs_protheus_passive_api_key';
 	private const OPTION_PASS = 'abs_protheus_passive_api_pass';
+	private const OPTION_STATUS_MAP = 'abs_protheus_passive_status_map';
 	private const NS = 'abs-protheus-passive/v1';
 
 	public function __construct() {
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 		add_action( 'admin_menu', array( $this, 'register_admin_page' ) );
 		add_action( 'admin_post_abs_protheus_passive_regenerate', array( $this, 'handle_regenerate_credentials' ) );
+		add_action( 'admin_post_abs_protheus_passive_save_status_map', array( $this, 'handle_save_status_map' ) );
 	}
 
 	public static function activate() {
@@ -37,6 +39,18 @@ final class ABS_Protheus_Passive_API {
 		if ( empty( $pass ) ) {
 			update_option( self::OPTION_PASS, wp_generate_password( 32, true, true ) );
 		}
+	}
+
+	private function default_status_map() {
+		return array(
+			'101'       => 'pending',
+			'102'       => 'processing',
+			'103'       => 'completed',
+			'cancelled' => 'cancelled',
+			'approved'  => 'processing',
+			'invoiced'  => 'completed',
+			'shipped'   => 'completed',
+		);
 	}
 
 	public function register_admin_page() {
@@ -61,6 +75,11 @@ final class ABS_Protheus_Passive_API {
 		$pass     = (string) get_option( self::OPTION_PASS, '' );
 		$base_url = rtrim( get_site_url(), '/' ) . '/wp-json/' . self::NS;
 		$query_auth = 'key=' . rawurlencode( $key ) . '&pass=' . rawurlencode( $pass );
+		$status_map = get_option( self::OPTION_STATUS_MAP, $this->default_status_map() );
+		if ( ! is_array( $status_map ) ) {
+			$status_map = $this->default_status_map();
+		}
+		$status_map_json = wp_json_encode( $status_map, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES );
 
 			$endpoints = array(
 				'Clientes' => array(
@@ -249,6 +268,23 @@ final class ABS_Protheus_Passive_API {
 				<p>GET: query <code>?key=...&pass=...</code> ou headers <code>X-API-Key</code> e <code>X-API-Pass</code>.</p>
 				<p>POST: JSON no body com <code>Content-Type: application/json</code>.</p>
 			</div>
+
+			<div class="absppa-auth">
+				<h3>Mapeamento de Status ERP -> WooCommerce</h3>
+				<?php if ( isset( $_GET['status_map_saved'] ) ) : ?>
+					<div class="notice notice-success"><p>Mapeamento de status salvo.</p></div>
+				<?php endif; ?>
+				<?php if ( isset( $_GET['status_map_error'] ) ) : ?>
+					<div class="notice notice-error"><p>JSON inválido. Verifique o formato e tente novamente.</p></div>
+				<?php endif; ?>
+				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+					<input type="hidden" name="action" value="abs_protheus_passive_save_status_map" />
+					<?php wp_nonce_field( 'abs_protheus_passive_save_status_map' ); ?>
+					<p>Use JSON no formato <code>{"102":"processing","103":"completed"}</code>.</p>
+					<textarea name="status_map_json" rows="12" style="width:100%;font-family:ui-monospace,Menlo,monospace;"><?php echo esc_textarea( $status_map_json ); ?></textarea>
+					<p style="margin-top:10px;"><?php submit_button( 'Salvar mapeamento de status', 'primary', 'submit', false ); ?></p>
+				</form>
+			</div>
 		</div>
 		<?php
 	}
@@ -262,7 +298,46 @@ final class ABS_Protheus_Passive_API {
 		update_option( self::OPTION_KEY, wp_generate_password( 24, false, false ) );
 		update_option( self::OPTION_PASS, wp_generate_password( 32, true, true ) );
 
-		wp_safe_redirect( admin_url( 'admin.php?page=abs-protheus-passive-api' ) );
+			wp_safe_redirect( admin_url( 'admin.php?page=abs-protheus-passive-api' ) );
+			exit;
+		}
+
+	public function handle_save_status_map() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			wp_die( esc_html__( 'Sem permissão.', 'abs-protheus-passive-api' ) );
+		}
+
+		check_admin_referer( 'abs_protheus_passive_save_status_map' );
+
+		$json = isset( $_POST['status_map_json'] ) ? wp_unslash( (string) $_POST['status_map_json'] ) : '';
+		$map  = json_decode( $json, true );
+
+		if ( ! is_array( $map ) ) {
+			wp_safe_redirect( admin_url( 'admin.php?page=abs-protheus-passive-api&status_map_error=1' ) );
+			exit;
+		}
+
+		$allowed_statuses = array( 'pending', 'on-hold', 'processing', 'completed', 'cancelled', 'refunded', 'failed' );
+		$sanitized_map    = array();
+
+		foreach ( $map as $source => $target ) {
+			$source = strtolower( sanitize_text_field( (string) $source ) );
+			$target = strtolower( preg_replace( '/^wc-/', '', sanitize_text_field( (string) $target ) ) );
+
+			if ( '' === $source || ! in_array( $target, $allowed_statuses, true ) ) {
+				continue;
+			}
+
+			$sanitized_map[ $source ] = $target;
+		}
+
+		if ( empty( $sanitized_map ) ) {
+			$sanitized_map = $this->default_status_map();
+		}
+
+		update_option( self::OPTION_STATUS_MAP, $sanitized_map );
+
+		wp_safe_redirect( admin_url( 'admin.php?page=abs-protheus-passive-api&status_map_saved=1' ) );
 		exit;
 	}
 
@@ -1046,15 +1121,10 @@ final class ABS_Protheus_Passive_API {
 
 	private function map_status( $status ) {
 		$status = strtolower( trim( (string) $status ) );
-		$map    = array(
-			'101'       => 'pending',
-			'102'       => 'processing',
-			'103'       => 'completed',
-			'cancelled' => 'cancelled',
-			'approved'  => 'processing',
-			'invoiced'  => 'completed',
-			'shipped'   => 'completed',
-		);
+		$map    = get_option( self::OPTION_STATUS_MAP, $this->default_status_map() );
+		if ( ! is_array( $map ) ) {
+			$map = $this->default_status_map();
+		}
 		return $map[ $status ] ?? preg_replace( '/^wc-/', '', $status );
 	}
 
